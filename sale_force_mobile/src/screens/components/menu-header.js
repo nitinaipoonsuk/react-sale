@@ -10,13 +10,13 @@ import {
     Body
 } from "native-base";
 
+import styles from "./styles"
+
 export class MenuHeader extends Component {
     render() {
         const { navigation, children } = this.props
         return (
-            <Header style={{
-                backgroundColor: "#ff8838"
-              }}>
+            <Header style={styles.bsup}>
                 <Left>
                     <Button 
                         transparent

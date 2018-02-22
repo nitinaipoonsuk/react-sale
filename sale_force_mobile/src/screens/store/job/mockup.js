@@ -15,7 +15,7 @@ const createJobModel = (id,jobName, jobCode, sourceDate, sourceStationName, dest
 
 const createJob = () => {
     let datas = []
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 20; i++) {
         let data = createJobModel(
             i,
             'JOB'+i,
