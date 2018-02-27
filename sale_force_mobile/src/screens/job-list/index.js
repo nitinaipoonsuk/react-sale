@@ -13,12 +13,13 @@ import {
   Left,
   Body,
   Right,
-  Grid,
-  Col,
-  Row,
   SwipeRow,
-  View
+  View,
+  CardItem,
+  Card
 } from "native-base";
+
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 import moment from 'moment'
 
@@ -43,10 +44,12 @@ class JobList extends Component {
         </MenuHeader>
         <Content>
           <List
+            button
             dataArray={datas}
             renderRow={data =>
 
               <SwipeRow
+
                 rightOpenValue={-75}
                 right={
                   <Button style={styles.bsup}
@@ -56,36 +59,24 @@ class JobList extends Component {
                 }
                 disableRightSwipe
                 body={
-                  <ListItem onPress={() => this.props.navigation.navigate("ReceiveGoods", { data: data })}>
-                    <Body>
-                      <Row>
+                  <Grid
+                    onPress={() => this.props.navigation.navigate("ReceiveGoods", { data: data })}>
+                    <Row>
+                      <Col style={{ width: '50%' }}>
                         <Text>
-                          Job name
+                          Job name: {data.JobName}
                         </Text>
-                        <Text>
-                          {data.JobName}
+                        <Text note>
+                        Customer: {data.CustomerName}
                         </Text>
+                      </Col>
+                      <Col style={{ width: '50%' }}>
                         <Text>
-                          Code
+                          Code: {data.JobCode}
                       </Text>
-                        <Text>
-                          {data.JobCode}
-                        </Text>
-                      </Row>
-                      <Row>
-                        <Text note>
-                          Customer
-                        </Text>
-                        <Text note>
-                          {data.CustomerName}
-                        </Text>
-                      </Row>
-                    </Body>
-                    <Left>
-
-                    </Left>
-
-                  </ListItem>
+                      </Col>
+                    </Row>
+                  </Grid>
                 }
               />
 
