@@ -26,8 +26,8 @@ class Full extends Component {
             <Container fluid>
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard} />
-                <Route path="/customer" name="Customer" component={CustomerTable} />
-                <Route path="/customer/create" name="Create" component={Create} />                
+                <Route path="/customer/create" name="Create" component={Create} />   
+                <Route path="/customer" name="Customer" component={CustomerTable} />                             
                 <Route path="/driver" name="Driver" component={Driver} />
                 <Redirect from="/" to="/dashboard" />
               </Switch>
