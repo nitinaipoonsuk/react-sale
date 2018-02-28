@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import {
   Text,
   View, TouchableHighlight
-} from "react-native";
+} from "react-native"
 import {
   Container,
   Header,
@@ -21,19 +21,25 @@ import {
   Row,
   Card,
   CardItem
-} from "native-base";
+} from "native-base"
+import SignatureCapture from 'react-native-signature-capture'
+
+import Store from "../store/job"
+import { BackHeader } from "../components"
 
 import styles from "./styles"
 
-import { BackHeader } from "../components"
-
-var SignatureCapture = require('react-native-signature-capture');
-
 class ReceiveGoods extends Component {
+
+  constructor(props) {
+    super(props)
+    this.onSaveEvent = this.onSaveEvent.bind(this)
+
+  }
 
   render() {
     const { data } = this.props.navigation.state.params
-    console.log('job',data)
+    console.log('job', data)
     return (
       <Container style={styles.container}>
         <BackHeader navigation={this.props.navigation}>
@@ -44,8 +50,8 @@ class ReceiveGoods extends Component {
           <SignatureCapture
             style={[{ flex: 1 }, styles.signature]}
             ref="sign"
-            onSaveEvent={(result) => this._onSaveEvent(result,data.Id)}
-            onDragEvent={this._onDragEvent}
+            onSaveEvent={(result) => this.onSaveEvent(result, data.Id)}
+            onDragEvent={this.onDragEvent}
             saveImageFileInExtStorage={false}
             showNativeButtons={false}
             showTitleLabel={false}
@@ -67,29 +73,30 @@ class ReceiveGoods extends Component {
           <Text>{this.refs["sign"]}</Text>
         </View>
       </Container>
-    );
+    )
   }
 
   saveSign() {
-    this.refs["sign"].saveImage();
+    this.refs["sign"].saveImage()
   }
 
   resetSign() {
-    this.refs["sign"].resetImage();
+    this.refs["sign"].resetImage()
   }
 
-  _onSaveEvent(result,id) {
+  onSaveEvent(result, id) {
     //result.encoded - for the base64 encoded png
     //result.pathName - for the file path name
-    console.log('id:' ,id);
-    console.log(result);
+    Store.confirmGoods(result, id)
+    this.props.navigation.goBack()
+
   }
-  _onDragEvent() {
+  onDragEvent() {
     // This callback will be called when the user enters signature
-    console.log("dragged");
+    console.log("dragged")
   }
 
 }
 
 
-export default ReceiveGoods;
+export default ReceiveGoods
