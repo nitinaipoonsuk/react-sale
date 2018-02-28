@@ -12,6 +12,10 @@ export default {
     {
       name:'Customer',
       url:'/customer',      
+    },
+    {
+      name:'Driver',
+      url:'/driver'
     }
   ]
 };

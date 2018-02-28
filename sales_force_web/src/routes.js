@@ -2,6 +2,7 @@ const routes = {
   '/': 'Home',
   '/dashboard': 'Dashboard',
   '/customer': 'Customer',
-  '/customer/create': 'Create'
+  '/customer/create': 'Create',
+  '/driver': 'Driver'
 };
 export default routes;

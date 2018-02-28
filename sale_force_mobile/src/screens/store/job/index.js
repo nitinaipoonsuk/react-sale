@@ -8,6 +8,12 @@ class JobStore {
     getDatas() {
         this.datas = Mockup
     }
+
+    confirmGoods(result, id) {
+        console.log('id:', id)
+        console.log('encoded', result.encoded)
+        console.log('pathName', result.pathName)
+    }
 }
 
 export default new JobStore()

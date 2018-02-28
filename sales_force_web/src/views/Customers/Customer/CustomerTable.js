@@ -35,7 +35,7 @@ export class CustomerTable extends Component {
     render() {
         const { data } = this.state
 
-        const EditButton = <Link to={'/customer/create'} activeClassName="active"><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
+        const EditButton = <Link to={'/customer/create'} ><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
 
         const DeleteButton = <Button color="danger" size="sm"><i className="icon-trash"></i></Button>
 
