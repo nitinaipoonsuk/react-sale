@@ -4,5 +4,7 @@
     "slug": "sale_force_mobile",
     "sdkVersion": "25.0.0",
     "privacy": "public"
-  }
+  },
+  "name": "sale_force_mobile",
+  "displayName": "N Force Mobile"
 }
