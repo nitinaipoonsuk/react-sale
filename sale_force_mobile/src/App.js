@@ -4,7 +4,9 @@ import { StackNavigator, DrawerNavigator } from "react-navigation"
 
 import Home from "./screens/home/"
 import SideBar from "./screens/sidebar"
-import JobList from "./screens/joblist"
+import JobList from "./screens/job-list"
+import JobDetails from "./screens/job-details"
+import ReceiveGoods from "./screens/receive-goods"
 
 const Drawer = DrawerNavigator(
   {
@@ -22,7 +24,9 @@ const Drawer = DrawerNavigator(
 
 const AppNavigator = StackNavigator(
   {
-    Drawer: { screen: Drawer }
+    Drawer: { screen: Drawer },
+    JobDetails: { screen: JobDetails },
+    ReceiveGoods: { screen: ReceiveGoods }
   },
   {
     initialRouteName: "Drawer",
