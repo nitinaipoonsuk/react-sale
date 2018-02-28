@@ -7,7 +7,10 @@ import Breadcrumb from '../../components/Breadcrumb/';
 import Aside from '../../components/Aside/';
 import Footer from '../../components/Footer/';
 
+//views
 import Dashboard from '../../views/Dashboard/';
+import Customer from '../../views/Customer';
+import Driver from '../../views/Driver';
 
 class Full extends Component {
   render() {
@@ -21,6 +24,8 @@ class Full extends Component {
             <Container fluid>
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+                <Route path="/customer" name="Customer" component={Customer}/>
+                <Route path="/driver" name="Driver" component={Driver}/>
                 <Redirect from="/" to="/dashboard"/>
               </Switch>
             </Container>

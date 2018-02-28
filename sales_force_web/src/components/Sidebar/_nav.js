@@ -8,6 +8,14 @@ export default {
         variant: 'info',
         text: 'NEW'
       }*/
+    },
+    {
+      name:'Customer',
+      url:'/customer',      
+    },
+    {
+      name:'Driver',
+      url:'/driver'
     }
   ]
 };
