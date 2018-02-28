@@ -1,6 +1,7 @@
 const routes = {
   '/': 'Home',
   '/dashboard': 'Dashboard',
-  '/customer': 'Customer'
+  '/customer': 'Customer',
+  '/driver': 'Driver'
 };
 export default routes;
