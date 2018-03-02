@@ -5,7 +5,7 @@ import {Button,
     Col,
     Card,
     CardHeader,
-    CardBlock
+    CardBody
 } from "reactstrap";
 
 import 'react-table/react-table.css'
@@ -81,7 +81,7 @@ class Driver extends Component {
                         <CardHeader>
                             Driver list
                         </CardHeader>
-                        <CardBlock>
+                        <CardBody>
                         <Button color="success"><i className="fa fa-plus switch switch-sm switch-text switch-info float-right mb-0"></i></Button>
                         <ReactTable
                             data={data}
@@ -90,7 +90,7 @@ class Driver extends Component {
                             className="-striped -highlight"
                             noDataText="Oh Noes!"
                         />
-                        </CardBlock>
+                        </CardBody>
                     </Card>
                 </Col>
             </Row>
