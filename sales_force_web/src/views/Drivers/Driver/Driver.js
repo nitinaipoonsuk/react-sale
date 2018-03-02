@@ -36,7 +36,7 @@ class Driver extends Component {
 
     const { dataNo } = [{}]
 
-    const EditButton = <Link to={'/driver/createdriver'} ><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
+    const EditButton = <Link to={'/driver/editdriver'} ><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
     const DeleteButton = <Button color="danger" size="sm"><i className="icon-trash"></i></Button>
 
     const columns = [{
@@ -83,7 +83,9 @@ class Driver extends Component {
                             Driver list
                         </CardHeader>
                         <CardBody>
-                        <Button color="success"><i className="fa fa-plus switch switch-sm switch-text switch-info float-right mb-0"></i></Button>
+                        <Link to={'/driver/createdriver'}>
+                          <Button color="success"><i className="fa fa-plus"></i></Button>
+                        </Link>
                         <ReactTable
                             data={data}
                             columns={columns}

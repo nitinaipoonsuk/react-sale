@@ -16,17 +16,13 @@ import {
 } from 'reactstrap';
 import BackButton from '../../Buttons/BackButton/BackButton';
 
-export class CreateDriver extends Component {
+export class EditDriver extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            pathname: {}
-        }
-    }
 
-    componentDidMount() {
-        this.state.pathname = this.props.location
+        }
     }
 
     render() {
@@ -34,7 +30,7 @@ export class CreateDriver extends Component {
             <div className="animated fadeIn">
                 <Card>
                     <CardHeader>
-                        <h4>Create driver</h4>
+                        <h4>Edit driver</h4>
                     </CardHeader>
                     <CardBody>
                         <Form action="" method="post" encType="multipart/form-data" className="form-horizontal" >
@@ -43,7 +39,7 @@ export class CreateDriver extends Component {
                                     <Label htmlFor="text-input" >Fistname</Label>
                                 </Col>
                                 <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
+                                    <Input type="text" id="text-input" name="text-input"/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -51,7 +47,7 @@ export class CreateDriver extends Component {
                                     <Label htmlFor="text-input">Lastname</Label>
                                 </Col>
                                 <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
+                                    <Input type="text" id="text-input" name="text-input"/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -59,7 +55,7 @@ export class CreateDriver extends Component {
                                     <Label htmlFor="text-input">Tel.</Label>
                                 </Col>
                                 <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
+                                    <Input type="text" id="text-input" name="text-input"/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -67,7 +63,7 @@ export class CreateDriver extends Component {
                                     <Label htmlFor="text-input">Address</Label>
                                 </Col>
                                 <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
+                                    <Input type="text" id="text-input" name="text-input"/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -89,7 +85,7 @@ export class CreateDriver extends Component {
                                     <Label htmlFor="text-input">No</Label>
                                 </Col>
                                 <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
+                                    <Input type="text" id="text-input" name="text-input"/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -97,7 +93,7 @@ export class CreateDriver extends Component {
                                     <Label htmlFor="text-input">Expired date</Label>
                                 </Col>
                                 <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
+                                    <Input type="text" id="text-input" name="text-input"/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -118,7 +114,7 @@ export class CreateDriver extends Component {
                                     <Label htmlFor="text-input">Note</Label>
                                 </Col>
                                 <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
+                                    <Input type="text" id="text-input" name="text-input"/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -130,7 +126,7 @@ export class CreateDriver extends Component {
                         </Form>
                     </CardBody>
                     <CardFooter>
-                        <BackButton pathname={this.state.pathname} />
+                        <BackButton />
                     </CardFooter>
                 </Card>
             </div>
@@ -138,4 +134,4 @@ export class CreateDriver extends Component {
     }
 }
 
-export default CreateDriver
+export default EditDriver
