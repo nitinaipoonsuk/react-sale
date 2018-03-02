@@ -12,15 +12,13 @@ export default class BackButton extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {    
-        this.state.pathname = nextProps.pathname     
+    componentWillMount(){  
+        this.state.pathname = this.props.pathname    
     }
-
-
     render() {
         return (
             <Row>
-                <Link to={'this.state.pathname'} ><Button color="primary">Back To List</Button></Link>
+                <Link to={this.state.pathname} ><Button color="primary">Back To List</Button></Link>
             </Row>
         )
     }

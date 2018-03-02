@@ -21,17 +21,17 @@ export class CreateDriver extends Component {
         super(props)
 
         this.state = {
-            pathname: '/driver'
+
         }
     }
 
-    /*componentDidMount() {
-        console.log("componentDidMount")
-        this.state.pathname = this.props.location
-        console.log('PathName: ', this.state.pathname)
-    }*/
-
     render() {
+
+        const location = {
+            pathname: '/driver',
+            state: { fromDashboard: true }
+        }
+
         return (
             <div className="animated fadeIn">
                 <Card>
@@ -132,7 +132,7 @@ export class CreateDriver extends Component {
                         </Form>
                     </CardBody>
                     <CardFooter>
-                        <BackButton pathname={this.state.pathname} />
+                        <BackButton pathname={location} />
                     </CardFooter>
                 </Card>
             </div>
