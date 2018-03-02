@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ReactTable from 'react-table'
 import {Button,
     Row,
@@ -35,7 +36,7 @@ class Driver extends Component {
 
     const { dataNo } = [{}]
 
-    const EditButton = <Button color="warning" size="sm"><i className="icon-list"></i></Button>
+    const EditButton = <Link to={'/driver/createdriver'} ><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
     const DeleteButton = <Button color="danger" size="sm"><i className="icon-trash"></i></Button>
 
     const columns = [{

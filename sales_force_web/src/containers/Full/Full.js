@@ -11,7 +11,8 @@ import Footer from '../../components/Footer/';
 import Dashboard from '../../views/Dashboard/';
 import { CustomerTable } from '../../views/Customers/Customer/CustomerTable';
 import { Create } from '../../views/Customers/Create/Create';
-import Driver from '../../views/Driver';
+import { CreateDriver } from '../../views/Drivers/Create/CreateDriver';
+import Driver  from '../../views/Drivers/Driver/Driver';
 
 
 class Full extends Component {
@@ -27,7 +28,8 @@ class Full extends Component {
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard} />
                 <Route path="/customer/create" name="Create" component={Create} />   
-                <Route path="/customer" name="Customer" component={CustomerTable} />                             
+                <Route path="/customer" name="Customer" component={CustomerTable} /> 
+                <Route path="/driver/createdriver" name="CreateDriver" component={CreateDriver}/>                            
                 <Route path="/driver" name="Driver" component={Driver} />
                 <Redirect from="/" to="/dashboard" />
               </Switch>
