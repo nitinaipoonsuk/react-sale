@@ -18,9 +18,9 @@ import {
   CardItem,
   Card
 } from "native-base";
-
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
+import { observable, action } from "mobx";
 import moment from 'moment'
 
 import styles from "./styles"
@@ -36,7 +36,8 @@ class JobList extends Component {
   }
 
   render() {
-    const { datas } = Store
+    const datas = Store.datas.slice()
+    console.log(datas)
     return (
       <Container style={styles.container}>
         <MenuHeader navigation={this.props.navigation}>
