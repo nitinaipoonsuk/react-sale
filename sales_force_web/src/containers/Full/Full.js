@@ -29,9 +29,9 @@ class Full extends Component {
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard} />
                 <Route path="/customer/create" name="Create" component={Create} />   
-                <Route path="/customer" name="Customer" component={CustomerTable} />
-                <Route path="/driver/editdriver" name="EditDriver" component={EditDriver}/> 
-                <Route path="/driver/createdriver" name="CreateDriver" component={CreateDriver}/>                            
+                <Route path="/customer" name="Customer" component={CustomerTable} /> 
+                <Route path="/driver/createdriver" name="CreateDriver" component={CreateDriver}/> 
+                <Route path="/driver/editdriver" name="EditDriver" component={EditDriver}/>                           
                 <Route path="/driver" name="Driver" component={Driver} />
                 <Redirect from="/" to="/dashboard" />
               </Switch>

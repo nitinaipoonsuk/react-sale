@@ -21,8 +21,12 @@ export class EditDriver extends Component {
         super(props)
 
         this.state = {
-
+            pathname: {}
         }
+    }
+
+    componentDidMount() {
+        this.state.pathname = this.props.location
     }
 
     render() {
@@ -126,7 +130,7 @@ export class EditDriver extends Component {
                         </Form>
                     </CardBody>
                     <CardFooter>
-                        <BackButton />
+                        <BackButton pathname={this.state.pathname} />
                     </CardFooter>
                 </Card>
             </div>
