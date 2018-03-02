@@ -4,6 +4,6 @@ const routes = {
   '/customer': 'Customer',
   '/customer/create': 'Create',
   '/driver': 'Driver',
-  '.driver/create': 'Create'
+  '/driver/createdriver': 'Create'
 };
 export default routes;
