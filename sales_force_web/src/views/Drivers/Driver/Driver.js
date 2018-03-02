@@ -83,8 +83,8 @@ class Driver extends Component {
                             Driver list
                         </CardHeader>
                         <CardBody>
-                        <Link to={'/driver/createdriver'}>
-                          <Button color="success"><i className="fa fa-plus"></i></Button>
+                        <Link to={'/driver/createdriver'} >
+                          <Button color="success" size="sm"><i className="icon-plus"></i></Button>
                         </Link>
                         <ReactTable
                             data={data}
