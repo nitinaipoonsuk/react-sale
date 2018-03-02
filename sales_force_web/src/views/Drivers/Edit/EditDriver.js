@@ -25,11 +25,14 @@ export class EditDriver extends Component {
         }
     }
 
-    componentDidMount() {
-        this.state.pathname = this.props.location
-    }
 
     render() {
+
+        const location = {
+            pathname: '/edit',
+            state: { fromDashboard: true }
+        }
+
         return (
             <div className="animated fadeIn">
                 <Card>
@@ -130,7 +133,7 @@ export class EditDriver extends Component {
                         </Form>
                     </CardBody>
                     <CardFooter>
-                        <BackButton pathname={this.state.pathname} />
+                        <BackButton pathname={location} />
                     </CardFooter>
                 </Card>
             </div>
