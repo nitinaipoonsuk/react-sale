@@ -2,7 +2,7 @@ import React from "react"
 import { Root } from "native-base"
 import { StackNavigator, DrawerNavigator } from "react-navigation"
 
-import Home from "./screens/home/"
+import Login from "./screens/login"
 import SideBar from "./screens/sidebar"
 import JobList from "./screens/job-list"
 import JobDetails from "./screens/job-details"
@@ -10,11 +10,11 @@ import ReceiveGoods from "./screens/receive-goods"
 
 const Drawer = DrawerNavigator(
   {
-    Home: { screen: Home },
+    Login: { screen: Login },
     JobList: { screen: JobList }
   },
   {
-    initialRouteName: "JobList",
+    initialRouteName: "Login",
     contentOptions: {
       activeTintColor: "#e91e63"
     },

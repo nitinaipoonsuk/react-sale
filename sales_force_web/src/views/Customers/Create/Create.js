@@ -19,19 +19,15 @@ import BackButton from '../../Buttons/BackButton/BackButton';
 export class Create extends Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-            pathname: {}
-        }
-    }
-
-    componentDidMount() {
-        console.log("componentDidMount")
-        this.state.pathname = this.props.location
-        console.log('PathName: ', this.state.pathname)
     }
 
     render() {
+
+        const location = {
+            pathname: '/customer',
+            state: { fromDashboard: true }
+        }
+
         return (
             <div className="animated fadeIn">
                 <Card>
@@ -126,7 +122,7 @@ export class Create extends Component {
                         </Form>
                     </CardBody>
                     <CardFooter>
-                        <BackButton pathname={this.state}/>
+                        <BackButton pathname={location} />
                     </CardFooter>
                 </Card>
             </div>

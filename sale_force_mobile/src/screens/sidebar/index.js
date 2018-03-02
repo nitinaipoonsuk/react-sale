@@ -25,7 +25,7 @@ const datas = [
   },
   {
     name: "Logout",
-    route: "Home",
+    route: "Login",
     icon: "md-log-out",
     bg: "#C5F442"
   }

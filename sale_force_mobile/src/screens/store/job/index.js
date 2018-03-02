@@ -2,7 +2,7 @@ import { observable, action } from "mobx";
 import Mockup from "./mockup"
 
 class JobStore {
-    datas = []
+    @observable datas = []
 
     @action
     getDatas() {

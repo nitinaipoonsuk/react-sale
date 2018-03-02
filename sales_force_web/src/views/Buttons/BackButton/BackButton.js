@@ -4,15 +4,21 @@ import { Row, Col, Card, CardHeader, CardBody, Button } from 'reactstrap';
 
 export default class BackButton extends Component {
 
-    componentDidMount(){
-        console.log("ComponentWillReceiveProps")
-        console.log(this.props.pathname)
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            pathname: {}
+        }
     }
 
+    componentWillMount(){  
+        this.state.pathname = this.props.pathname    
+    }
     render() {
         return (
             <Row>
-                <Link to={this.props.pathname} ><Button color="primary">Back To List</Button></Link>
+                <Link to={this.state.pathname} ><Button color="primary">Back To List</Button></Link>
             </Row>
         )
     }
