@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Row, Col, Card, CardHeader, CardBody, Button } from 'reactstrap';
 
 
@@ -65,11 +65,11 @@ export class CustomerTable extends Component {
             <div className="animated fadeIn">
                 <Card>
                     <CardHeader>
-                        Customer
+                        <h4>Customer</h4>
                     </CardHeader>
                     <CardBody>
                         <div>
-                            <Button color="success" size="sm"><i className="icon-plus"></i></Button>
+                            <Link to={'/customer/create'} ><Button color="success" size="sm"><i className="icon-plus"></i></Button></Link>
                         </div>
                         <br />
                         <div>
