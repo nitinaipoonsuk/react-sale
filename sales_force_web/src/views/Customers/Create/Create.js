@@ -21,8 +21,14 @@ export class Create extends Component {
         super(props)
 
         this.state = {
-
+            pathname: {}
         }
+    }
+
+    componentDidMount() {
+        console.log("componentDidMount")
+        this.state.pathname = this.props.location
+        console.log('PathName: ', this.state.pathname)
     }
 
     render() {
@@ -114,13 +120,13 @@ export class Create extends Component {
                             <FormGroup row>
                                 <Col xs="12" md="6">
                                     <Button type="submit" color="success">Save changes</Button>{' '}
-                                    <Button color="secondary">Cancel</Button>{' '}
+                                    <Button type="button" color="secondary">Cancel</Button>{' '}
                                 </Col>
                             </FormGroup>
                         </Form>
                     </CardBody>
                     <CardFooter>
-                        <BackButton />
+                        <BackButton pathname={this.state}/>
                     </CardFooter>
                 </Card>
             </div>
