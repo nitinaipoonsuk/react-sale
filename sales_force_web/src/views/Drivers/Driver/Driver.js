@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ReactTable from 'react-table'
 import {Button,
     Row,
     Col,
     Card,
     CardHeader,
-    CardBlock
+    CardBody
 } from "reactstrap";
 
 import 'react-table/react-table.css'
@@ -35,7 +36,7 @@ class Driver extends Component {
 
     const { dataNo } = [{}]
 
-    const EditButton = <Button color="warning" size="sm"><i className="icon-list"></i></Button>
+    const EditButton = <Link to={'/driver/editdriver'} ><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
     const DeleteButton = <Button color="danger" size="sm"><i className="icon-trash"></i></Button>
 
     const columns = [{
@@ -81,8 +82,10 @@ class Driver extends Component {
                         <CardHeader>
                             Driver list
                         </CardHeader>
-                        <CardBlock>
-                        <Button color="success"><i className="fa fa-plus switch switch-sm switch-text switch-info float-right mb-0"></i></Button>
+                        <CardBody>
+                        <Link to={'/driver/createdriver'}>
+                          <Button color="success"><i className="fa fa-plus"></i></Button>
+                        </Link>
                         <ReactTable
                             data={data}
                             columns={columns}
@@ -90,7 +93,7 @@ class Driver extends Component {
                             className="-striped -highlight"
                             noDataText="Oh Noes!"
                         />
-                        </CardBlock>
+                        </CardBody>
                     </Card>
                 </Col>
             </Row>

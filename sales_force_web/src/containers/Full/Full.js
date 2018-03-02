@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Link, Switch, Route, Redirect} from 'react-router-dom';
-import {Container} from 'reactstrap';
+import React, { Component } from 'react';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Container } from 'reactstrap';
 import Header from '../../components/Header/';
 import Sidebar from '../../components/Sidebar/';
 import Breadcrumb from '../../components/Breadcrumb/';
@@ -9,8 +9,12 @@ import Footer from '../../components/Footer/';
 
 //views
 import Dashboard from '../../views/Dashboard/';
-import Customer from '../../views/Customer';
-import Driver from '../../views/Driver';
+import { CustomerTable } from '../../views/Customers/Customer/CustomerTable';
+import { Create } from '../../views/Customers/Create/Create';
+import { CreateDriver } from '../../views/Drivers/Create/CreateDriver';
+import Driver  from '../../views/Drivers/Driver/Driver';
+import { EditDriver } from '../../views/Drivers/Edit/EditDriver';
+
 
 class Full extends Component {
   render() {
@@ -18,15 +22,18 @@ class Full extends Component {
       <div className="app">
         <Header />
         <div className="app-body">
-          <Sidebar {...this.props}/>
+          <Sidebar {...this.props} />
           <main className="main">
             <Breadcrumb />
             <Container fluid>
               <Switch>
-                <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
-                <Route path="/customer" name="Customer" component={Customer}/>
-                <Route path="/driver" name="Driver" component={Driver}/>
-                <Redirect from="/" to="/dashboard"/>
+                <Route path="/dashboard" name="Dashboard" component={Dashboard} />
+                <Route path="/customer/create" name="Create" component={Create} />   
+                <Route path="/customer" name="Customer" component={CustomerTable} />
+                <Route path="/driver/editdriver" name="EditDriver" component={EditDriver}/> 
+                <Route path="/driver/createdriver" name="CreateDriver" component={CreateDriver}/>                            
+                <Route path="/driver" name="Driver" component={Driver} />
+                <Redirect from="/" to="/dashboard" />
               </Switch>
             </Container>
           </main>
