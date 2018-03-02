@@ -12,9 +12,10 @@ import Dashboard from '../../views/Dashboard/';
 import { CustomerTable } from '../../views/Customers/Customer/CustomerTable';
 import { Create } from '../../views/Customers/Create/Create';
 import { CreateDriver } from '../../views/Drivers/Create/CreateDriver';
-import Driver  from '../../views/Drivers/Driver/Driver';
+import Driver from '../../views/Drivers/Driver/Driver';
 import { EditDriver } from '../../views/Drivers/Edit/EditDriver';
-import { DeleteDriver } from '../../views/Drivers/Delete/DeleteDriver';
+import { EditCustomer } from '../../views/Customers/EditCustomer/EditCustomer';
+import { DeleteCustomer } from '../../views/Customers/DeleteCustomer/DeleteCustomer';
 
 
 class Full extends Component {
@@ -29,10 +30,9 @@ class Full extends Component {
             <Container fluid>
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard} />
-                <Route path="/customer/create" name="Create" component={Create} />   
-                <Route path="/customer" name="Customer" component={CustomerTable} /> 
-                <Route path="/driver/createdriver" name="CreateDriver" component={CreateDriver}/> 
-                <Route path="/driver/editdriver" name="EditDriver" component={EditDriver}/>
+                <Route path="/customer/delete" name="Delete" component={DeleteCustomer} />
+                <Route path="/customer/edit" name="Edit" component={EditCustomer} />
+
                 <Route path="/driver/deletedriver" name="DeleteDriver" component={DeleteDriver}/>                           
                 <Route path="/driver" name="Driver" component={Driver} />
                 <Redirect from="/" to="/dashboard" />
