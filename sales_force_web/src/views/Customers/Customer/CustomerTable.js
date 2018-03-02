@@ -35,9 +35,9 @@ export class CustomerTable extends Component {
     render() {
         const { data } = this.state
 
-        const EditButton = <Link to={'/customer/create'} ><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
+        const EditButton = <Link to={'/customer/edit'} ><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
 
-        const DeleteButton = <Button color="danger" size="sm"><i className="icon-trash"></i></Button>
+        const DeleteButton = <Link to={'/customer/delete'}><Button color="danger" size="sm"><i className="icon-trash"></i></Button></Link>
 
         const columns = [
             {
@@ -76,7 +76,7 @@ export class CustomerTable extends Component {
                             <ReactTable
                                 data={data}
                                 columns={columns}
-                                defaultPageSize={16}
+                                defaultPageSize={14}
                                 className="-striped -highlight"
                             />
                         </div>
