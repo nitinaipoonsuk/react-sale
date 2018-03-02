@@ -21,15 +21,15 @@ export class Create extends Component {
         super(props)
 
         this.state = {
-            pathname: {}
+            pathname: '/customer'
         }
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         console.log("componentDidMount")
         this.state.pathname = this.props.location
         console.log('PathName: ', this.state.pathname)
-    }
+    }*/
 
     render() {
         return (
@@ -126,7 +126,7 @@ export class Create extends Component {
                         </Form>
                     </CardBody>
                     <CardFooter>
-                        <BackButton pathname={this.state}/>
+                        <BackButton pathname={this.state.pathname}/>
                     </CardFooter>
                 </Card>
             </div>

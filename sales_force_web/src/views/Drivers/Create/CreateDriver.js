@@ -21,13 +21,15 @@ export class CreateDriver extends Component {
         super(props)
 
         this.state = {
-            pathname: {}
+            pathname: '/driver'
         }
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
+        console.log("componentDidMount")
         this.state.pathname = this.props.location
-    }
+        console.log('PathName: ', this.state.pathname)
+    }*/
 
     render() {
         return (
