@@ -3,10 +3,13 @@ import { Card, CardHeader, CardBody, CardFooter } from 'reactstrap';
 import BackButton from '../../Buttons/BackButton/BackButton';
 import { From } from '../Form/Form';
 
-export class Create extends Component {
+export class EditCustomer extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+        }
     }
+
     render() {
 
         const location = {
@@ -18,7 +21,7 @@ export class Create extends Component {
             <div className="animated fadeIn">
                 <Card>
                     <CardHeader>
-                        <h4>Create Customer</h4>
+                        <h4>Edit Customer</h4>
                     </CardHeader>
                     <CardBody>
                         <From />
@@ -32,4 +35,4 @@ export class Create extends Component {
     }
 }
 
-export default Create
+export default EditCustomer
