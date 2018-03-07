@@ -18,7 +18,7 @@ const Drawer = DrawerNavigator(
     JobList: { screen: JobList }
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "JobList",
     contentOptions: {
       activeTintColor: "#e91e63"
     },
