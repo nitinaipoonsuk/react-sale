@@ -25,18 +25,20 @@ import moment from 'moment'
 
 import styles from "./styles"
 import { MenuHeader } from "../components"
-import Store from "../store/job"
+
+import { observer, inject } from 'mobx-react';
 
 
-
+@inject('JobStore')
+@observer
 class JobList extends Component {
 
   componentWillMount() {
-    Store.getDatas()
+    this.props.JobStore.getDatas()
   }
 
   render() {
-    const datas = Store.datas.slice()
+    const datas = this.props.JobStore.datas.slice()
     console.log(datas)
     return (
       <Container style={styles.container}>
@@ -60,20 +62,20 @@ class JobList extends Component {
                 }
                 disableRightSwipe
                 body={
-                  <Grid
+                  <Grid style={{padding: 10}}
                     onPress={() => this.props.navigation.navigate("ReceiveGoods", { data: data })}>
                     <Row>
-                      <Col style={{ width: '50%' }}>
+                      <Col style={{ width: '50%' , left:'auto'}}>
                         <Text>
-                          Job name: {data.JobName}
+                          {data.jobName}
                         </Text>
                         <Text note>
-                        Customer: {data.CustomerName}
+                        {data.customerName}
                         </Text>
                       </Col>
                       <Col style={{ width: '50%' }}>
-                        <Text>
-                          Code: {data.JobCode}
+                        <Text note>
+                          Code: {data.jobCode}
                       </Text>
                       </Col>
                     </Row>

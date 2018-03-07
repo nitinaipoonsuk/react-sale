@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>8GAN637KC9.org.reactjs.native.example.sale-force-mobile</string>
+	<string>8GAN637KC9.th.in.navtech.nforce</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>8GAN637KC9.org.reactjs.native.example.sale-force-mobile</string>
+		<string>8GAN637KC9.th.in.navtech.nforce</string>
 	</array>
 </dict>
 </plist>

@@ -48,7 +48,7 @@ class JobDetails extends Component {
                     </Text>
                   <Right>
                     <Text note >
-                      {data.JobName}
+                      {data.jobName}
                     </Text>
                   </Right>
                 </Row>
@@ -58,7 +58,7 @@ class JobDetails extends Component {
                     </Text>
                   <Right>
                     <Text note >
-                      {data.JobCode}
+                      {data.jobCode}
                     </Text>
                   </Right>
                 </Row>
@@ -68,7 +68,7 @@ class JobDetails extends Component {
                     </Text>
                   <Right>
                     <Text note >
-                      {data.License}
+                      {data.license}
                     </Text>
                   </Right>
                 </Row>
@@ -78,7 +78,7 @@ class JobDetails extends Component {
                     </Text>
                   <Right>
                     <Text note >
-                      {data.CustomerName}
+                      {data.customerName}
                     </Text>
                   </Right>
                 </Row>
@@ -88,7 +88,7 @@ class JobDetails extends Component {
                     </Text>
                   <Right>
                     <Text note>
-                      {moment(data.SourceDate).format('DD/MM/YYYY HH:mm')}
+                      {moment(data.sourceDate).format('DD/MM/YYYY HH:mm')}
                     </Text>
                   </Right>
                 </Row>
@@ -98,7 +98,7 @@ class JobDetails extends Component {
                   </Text>
                   <Right>
                     <Text note>
-                      {data.SourceStationName}
+                      {data.sourceStationName}
                     </Text>
                   </Right>
                 </Row>
@@ -108,7 +108,7 @@ class JobDetails extends Component {
                     </Text>
                   <Right>
                     <Text note>
-                      {moment(data.DestDate).format('DD/MM/YYYY HH:mm')}
+                      {moment(data.destDate).format('DD/MM/YYYY HH:mm')}
                     </Text>
                   </Right>
                 </Row>
@@ -118,7 +118,7 @@ class JobDetails extends Component {
                     </Text>
                   <Right>
                     <Text note>
-                      {data.DestStationName}
+                      {data.destStationName}
                     </Text>
                   </Right>
                 </Row>
