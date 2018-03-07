@@ -29,7 +29,7 @@ class Full extends Component {
             <Breadcrumb />
             <Container fluid>
               <Switch>
-                <Route path="/dashboard" name="Dashboard" component={Dashboard} />
+                <Route path="/dashboard" name="Dashboard" component={Dashboard } />
                 <Route path="/customer/delete" name="Delete" component={DeleteCustomer} />
                 <Route path="/customer/edit" name="Edit" component={EditCustomer} />
                 <Route path="/driver/createdriver" name="EditDriver" component={CreateDriver}/> 
