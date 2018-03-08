@@ -13,5 +13,9 @@ export default {
     textAlign: 'right',
     alignSelf: 'stretch',
     fontSize: 10
+  },
+  padding: {
+    paddingLeft: 10,
   }
+
 };

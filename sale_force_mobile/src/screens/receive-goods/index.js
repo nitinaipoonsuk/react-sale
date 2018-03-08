@@ -20,7 +20,8 @@ import {
   Col,
   Row,
   Card,
-  CardItem
+  CardItem,
+  Footer
 } from "native-base"
 import SignatureCapture from 'react-native-signature-capture'
 
@@ -59,7 +60,7 @@ class ReceiveGoods extends Component {
             showTitleLabel={false}
             viewMode={"portrait"} />
 
-          <View style={{ flex: 1, flexDirection: "row" }}>
+          <Footer>
             <TouchableHighlight style={styles.saveButton}
               onPress={() => { this.saveSign() }} >
               <Text>Save</Text>
@@ -71,7 +72,7 @@ class ReceiveGoods extends Component {
               }} >
               <Text>Reset</Text>
             </TouchableHighlight>
-          </View>
+          </Footer>
           <Text>{this.refs["sign"]}</Text>
         </View>
       </Container>

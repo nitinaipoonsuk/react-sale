@@ -62,7 +62,7 @@ class JobList extends Component {
                 }
                 disableRightSwipe
                 body={
-                  <Grid style={{ padding: 10 }}
+                  <Grid style={styles.padding}
                     onPress={() => this.props.navigation.navigate("ReceiveGoods", { data: data })}>
                     <Row>
                       <Col style={{ width: '50%' }}>
@@ -72,15 +72,17 @@ class JobList extends Component {
                         <Text note style={styles.textLeft}>
                           {data.customerName}
                         </Text>
-                        <Text note style={styles.textLeft}>
-                          {data.sourceStationName} - {data.destStationName}
-                        </Text>
                       </Col>
                       <Col style={{ width: '50%' }}>
                         <Text note style={styles.textRight}>
-                        {moment(data.destDate).format('HH:mm')}
+                          {moment(data.destDate).format('HH:mm')}
                         </Text>
                       </Col>
+                    </Row>
+                    <Row>
+                      <Text note style={styles.textLeft}>
+                        {data.sourceStationName} - {data.destStationName}
+                      </Text>
                     </Row>
                   </Grid>
                 }
