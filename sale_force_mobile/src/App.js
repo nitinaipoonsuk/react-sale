@@ -2,6 +2,10 @@ import React from "react"
 import { Root } from "native-base"
 import { StackNavigator, DrawerNavigator } from "react-navigation"
 
+import { Provider } from 'mobx-react';
+import Store from './boot/store';
+import FakeStore from './boot/store.fake';
+
 import Login from "./screens/login"
 import SideBar from "./screens/sidebar"
 import JobList from "./screens/job-list"
@@ -14,7 +18,7 @@ const Drawer = DrawerNavigator(
     JobList: { screen: JobList }
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "JobList",
     contentOptions: {
       activeTintColor: "#e91e63"
     },
@@ -35,6 +39,8 @@ const AppNavigator = StackNavigator(
 )
 
 export default () =>
-  <Root>
-    <AppNavigator />
-  </Root>
+  <Provider {...Store}>
+    <Root>
+      <AppNavigator />
+    </Root>
+  </Provider>

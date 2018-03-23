@@ -20,15 +20,18 @@ import {
   Col,
   Row,
   Card,
-  CardItem
+  CardItem,
+  Footer
 } from "native-base"
 import SignatureCapture from 'react-native-signature-capture'
 
-import Store from "../store/job"
+import { observer, inject } from 'mobx-react';
+
 import { BackHeader } from "../components"
 
 import styles from "./styles"
 
+@inject('JobStore')
 class ReceiveGoods extends Component {
 
   constructor(props) {
@@ -43,21 +46,21 @@ class ReceiveGoods extends Component {
     return (
       <Container style={styles.container}>
         <BackHeader navigation={this.props.navigation}>
-          {data.JobName}
+          {data.jobName}
         </BackHeader>
         <View style={{ flex: 1, flexDirection: "column" }}>
           <Text style={{ alignItems: "center", justifyContent: "center" }}>Signature capture for customer </Text>
           <SignatureCapture
             style={[{ flex: 1 }, styles.signature]}
             ref="sign"
-            onSaveEvent={(result) => this.onSaveEvent(result, data.Id)}
+            onSaveEvent={(result) => this.onSaveEvent(result, data.id)}
             onDragEvent={this.onDragEvent}
             saveImageFileInExtStorage={false}
             showNativeButtons={false}
             showTitleLabel={false}
             viewMode={"portrait"} />
 
-          <View style={{ flex: 1, flexDirection: "row" }}>
+          <Footer>
             <TouchableHighlight style={styles.saveButton}
               onPress={() => { this.saveSign() }} >
               <Text>Save</Text>
@@ -69,7 +72,7 @@ class ReceiveGoods extends Component {
               }} >
               <Text>Reset</Text>
             </TouchableHighlight>
-          </View>
+          </Footer>
           <Text>{this.refs["sign"]}</Text>
         </View>
       </Container>
@@ -87,7 +90,7 @@ class ReceiveGoods extends Component {
   onSaveEvent(result, id) {
     //result.encoded - for the base64 encoded png
     //result.pathName - for the file path name
-    Store.confirmGoods(result, id)
+    this.props.JobStore.confirmGoods(result, id)
     this.props.navigation.goBack()
 
   }

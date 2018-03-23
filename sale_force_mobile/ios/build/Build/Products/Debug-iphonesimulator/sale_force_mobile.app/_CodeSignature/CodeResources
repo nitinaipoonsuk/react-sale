@@ -6,7 +6,7 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		4uSc7SmurhkqW7vMiQBtqlQMUCc=
+		SOjpKL8Ar8SwpOx+5UV319HXn98=
 		</data>
 		<key>Entypo.ttf</key>
 		<data>
@@ -71,7 +71,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		obvi8Jc9Q+gC7PzPHjEnqMJmFwk=
+		bHJKbVdMq9t6Mq/TVVBq+tFUmCQ=
 		</data>
 		<key>Ionicons.ttf</key>
 		<data>
@@ -99,7 +99,7 @@
 		</data>
 		<key>PlugIns/sale_force_mobileTests.xctest.dSYM/Contents/Resources/DWARF/sale_force_mobileTests</key>
 		<data>
-		GF1ZSYEgcOWcG53j31jAbilT33o=
+		PucLBmAxOBmFpHZdBGjv552C918=
 		</data>
 		<key>PlugIns/sale_force_mobileTests.xctest/Info.plist</key>
 		<data>
@@ -128,11 +128,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4uSc7SmurhkqW7vMiQBtqlQMUCc=
+			SOjpKL8Ar8SwpOx+5UV319HXn98=
 			</data>
 			<key>hash2</key>
 			<data>
-			Iq+KMKEnKDCnBts/wU1fMR6ouHc6WHDL6evYitDcglg=
+			x1WpIAYAPEvnK0KCrgacNaJ154aQZniXYF1OnIkABaM=
 			</data>
 		</dict>
 		<key>Entypo.ttf</key>
@@ -350,11 +350,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GF1ZSYEgcOWcG53j31jAbilT33o=
+			PucLBmAxOBmFpHZdBGjv552C918=
 			</data>
 			<key>hash2</key>
 			<data>
-			nR7E1CcT8+XmghJKHnaKI1qUzlOaTwabSGi6gvULVGE=
+			LDHnFTb1xITg2nAjOY/e42cp46x79vMyEWC0FBhcT3U=
 			</data>
 		</dict>
 		<key>PlugIns/sale_force_mobileTests.xctest/Info.plist</key>

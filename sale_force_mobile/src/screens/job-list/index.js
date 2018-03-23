@@ -25,18 +25,20 @@ import moment from 'moment'
 
 import styles from "./styles"
 import { MenuHeader } from "../components"
-import Store from "../store/job"
+
+import { observer, inject } from 'mobx-react';
 
 
-
+@inject('JobStore')
+@observer
 class JobList extends Component {
 
   componentWillMount() {
-    Store.getDatas()
+    this.props.JobStore.getDatas()
   }
 
   render() {
-    const datas = Store.datas.slice()
+    const datas = this.props.JobStore.datas.slice()
     console.log(datas)
     return (
       <Container style={styles.container}>
@@ -60,22 +62,27 @@ class JobList extends Component {
                 }
                 disableRightSwipe
                 body={
-                  <Grid
+                  <Grid style={styles.padding}
                     onPress={() => this.props.navigation.navigate("ReceiveGoods", { data: data })}>
                     <Row>
                       <Col style={{ width: '50%' }}>
-                        <Text>
-                          Job name: {data.JobName}
+                        <Text style={styles.textLeft}>
+                          {data.jobName}
                         </Text>
-                        <Text note>
-                        Customer: {data.CustomerName}
+                        <Text note style={styles.textLeft}>
+                          {data.customerName}
                         </Text>
                       </Col>
                       <Col style={{ width: '50%' }}>
-                        <Text>
-                          Code: {data.JobCode}
-                      </Text>
+                        <Text note style={styles.textRight}>
+                          {moment(data.destDate).format('HH:mm')}
+                        </Text>
                       </Col>
+                    </Row>
+                    <Row>
+                      <Text note style={styles.textLeft}>
+                        {data.sourceStationName} - {data.destStationName}
+                      </Text>
                     </Row>
                   </Grid>
                 }
