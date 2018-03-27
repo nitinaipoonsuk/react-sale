@@ -19,7 +19,7 @@ import Driver from '../../views/Drivers/Driver/Driver';
 import { EditDriver } from '../../views/Drivers/Edit/EditDriver';
 import { EditCustomer } from '../../views/Customers/EditCustomer/EditCustomer';
 import { DeleteCustomer } from '../../views/Customers/DeleteCustomer/DeleteCustomer';
-
+import { DeleteDriver } from '../../views/Drivers/Delete/DeleteDriver';
 
 
 class Full extends Component {
@@ -39,6 +39,9 @@ class Full extends Component {
                 <Route path="/customer/edit" name="Edit" component={EditCustomer} />
                 <Route path="/customer/create" name="Create" component={Create} />
                 <Route path="/customer" name="Customer" component={CustomerTable} />
+                <Route path="/driver/createdriver" name="EditDriver" component={CreateDriver}/> 
+                <Route path="/driver/editdriver" name="EditDriver" component={EditDriver}/> 
+                <Route path="/driver/deletedriver" name="DeleteDriver" component={DeleteDriver}/>                           
                 <Route path="/driver" name="Driver" component={Driver} />
                 <Redirect from="/" to="/dashboard" />
               </Switch>

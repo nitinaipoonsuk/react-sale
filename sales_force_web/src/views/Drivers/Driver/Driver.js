@@ -37,7 +37,7 @@ class Driver extends Component {
     const { dataNo } = [{}]
 
     const EditButton = <Link to={'/driver/editdriver'} ><Button color="warning" size="sm"><i className="icon-list"></i></Button></Link>
-    const DeleteButton = <Button color="danger" size="sm"><i className="icon-trash"></i></Button>
+    const DeleteButton = <Link to={'/driver/deletedriver'} ><Button color="danger" size="sm"><i className="icon-trash"></i></Button></Link>
 
     const columns = [{
         expander: true,
