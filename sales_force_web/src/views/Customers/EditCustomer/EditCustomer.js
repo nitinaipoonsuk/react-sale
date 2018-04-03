@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import { inject } from "mobx-react";
+import _  from "lodash";
+
 import BackButton from "../../Buttons/BackButton/BackButton";
 import { From } from "../Form/Form";
-import _  from "lodash";
 
 @inject("customerStore")
 export class EditCustomer extends Component {

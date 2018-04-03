@@ -1,143 +1,37 @@
-import React, { Component } from 'react'
-import {
-    Row,
-    Col,
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Button,
-    Form,
-    FormGroup,
-    FormText,
-    abel,
-    Input,
-    Label,
-} from 'reactstrap';
-import BackButton from '../../Buttons/BackButton/BackButton';
+import React, { Component } from "react";
+import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
+import BackButton from "../../Buttons/BackButton/BackButton";
+import { DriveFrom } from "../DriveFrom";
 
 export class CreateDriver extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props);
 
-        this.state = {
+    this.state = {};
+  }
 
-        }
-    }
+  render() {
+    const location = {
+      pathname: "/driver",
+      state: { fromDashboard: true }
+    };
 
-    render() {
-
-        const location = {
-            pathname: '/driver',
-            state: { fromDashboard: true }
-        }
-
-        return (
-            <div className="animated fadeIn">
-                <Card>
-                    <CardHeader>
-                        <h4>Create driver</h4>
-                    </CardHeader>
-                    <CardBody>
-                        <Form action="" method="post" encType="multipart/form-data" className="form-horizontal" >
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="text-input" >Fistname</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="text-input">Lastname</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="text-input">Tel.</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="text-input">Address</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="select">Vehicle driver type</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="select" name="select" id="select">
-                                        <option value="0">Please select</option>
-                                        <option value="1">Private car</option>
-                                        <option value="2">Truck</option>
-                                        <option value="3">Rickshaw</option>
-                                        <option value="3">Dangerous goods transport car</option>
-                                    </Input>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="text-input">No</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="text-input">Expired date</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="select">Subscribe</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="select" name="select" id="select">
-                                        <option value="0">Please select</option>
-                                        <option value="1">1 Year</option>
-                                        <option value="2">2 Year</option>
-                                        <option value="3">Life time</option>
-                                    </Input>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col md="5" align="right">
-                                    <Label htmlFor="text-input">Note</Label>
-                                </Col>
-                                <Col xs="12" md="5">
-                                    <Input type="text" id="text-input" name="text-input" />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Col xs="12" md="6">
-                                    <Button type="submit" color="success">Save</Button>{' '}
-                                    <Button color="secondary">Cancel</Button>{' '}
-                                </Col>
-                            </FormGroup>
-                        </Form>
-                    </CardBody>
-                    <CardFooter>
-                        <BackButton pathname={location} />
-                    </CardFooter>
-                </Card>
-            </div>
-        )
-    }
+    return (
+      <div className="animated fadeIn">
+        <Card>
+          <CardHeader>
+            <h4>Create driver</h4>
+          </CardHeader>
+          <CardBody>
+            <DriveFrom />
+          </CardBody>
+          <CardFooter>
+            <BackButton pathname={location} />
+          </CardFooter>
+        </Card>
+      </div>
+    );
+  }
 }
 
-export default CreateDriver
+export default CreateDriver;

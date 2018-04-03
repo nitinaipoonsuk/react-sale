@@ -13,8 +13,6 @@ import {
 import { observer, inject } from "mobx-react";
 import { observable, action } from "mobx";
 
-import { ToolsButton } from "../../Buttons/ToolsButton/ToolsButton";
-
 @inject("customerStore")
 @observer
 export class From extends Component {
@@ -33,7 +31,7 @@ export class From extends Component {
   };
 
   componentWillMount() {
-    this.data = this.props.data;
+    if (this.props.data) this.data = this.props.data;
   }
 
   handleSubmit(event) {

@@ -60,8 +60,7 @@ class CustomerStore {
   @action
   delete(id) {
     console.log(id);
-    this._api.delete(`/customer/delete/${id}`).then(Response => {
-      
+    this._api.delete(`/customer/delete/${id}`).then(Response => {      
       console.log(Response);
     });
   }

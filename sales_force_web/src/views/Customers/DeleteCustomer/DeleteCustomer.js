@@ -57,7 +57,7 @@ export class DeleteCustomer extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Create Customer</h4>
+            <h4>Delete Customer</h4>
           </CardHeader>
           <CardBody>
             <Form>
