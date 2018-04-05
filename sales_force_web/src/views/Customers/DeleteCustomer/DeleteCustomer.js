@@ -14,7 +14,7 @@ import {
   CardBody,
   CardFooter
 } from "reactstrap";
-import BackButton from "../../Buttons/BackButton/BackButton";
+import BackButton from "../../../components/Buttons/BackButton"
 import { inject } from "mobx-react";
 import _ from "lodash";
 
@@ -125,8 +125,8 @@ export class DeleteCustomer extends Component {
                   <Label htmlFor="text-input">{data[0].zipcode}</Label>
                 </Col>
               </FormGroup>
-              <FormGroup row>
-                <Col xs="12" md="6">
+              <FormGroup row align="center">
+                <Col>
                   <Button onClick={() => this.handleSubmit(data[0].id)} color="danger">
                     Delete
                   </Button>

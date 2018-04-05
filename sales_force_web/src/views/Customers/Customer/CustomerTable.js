@@ -54,7 +54,7 @@ class CustomerTable extends React.Component {
       </Link>
     );
 
-    const DeleteButton  = filter => (
+    const DeleteButton = filter => (
       <Link
         to={{
           pathname: "/customer/delete",
@@ -95,9 +95,7 @@ class CustomerTable extends React.Component {
     return (
       <div className="animated fadeIn">
         <Card>
-          <CardHeader>
-            <h4>Customer</h4>
-          </CardHeader>
+          <CardHeader> Customer </CardHeader>
           <CardBody>
             <div>
               <Link to={"/customer/create"}>

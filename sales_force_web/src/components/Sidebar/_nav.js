@@ -1,8 +1,8 @@
 export default {
   items: [
     {
-      name: 'Dashboard',
-      url: '/dashboard',
+      name: "Dashboard",
+      url: "/dashboard"
       //icon: 'icon-speedometer',
       /*badge: {
         variant: 'info',
@@ -10,12 +10,16 @@ export default {
       }*/
     },
     {
-      name:'Customer',
-      url:'/customer',      
+      name: "Customer",
+      url: "/customer"
     },
     {
-      name:'Driver',
-      url:'/driver'
+      name: "Driver",
+      url: "/driver"
+    },
+    {
+      name: "User",
+      url: "/user"
     }
   ]
 };

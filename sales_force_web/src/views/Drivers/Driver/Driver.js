@@ -124,7 +124,7 @@ class Driver extends Component {
         <Row>
           <Col>
             <Card>
-              <CardHeader>Driver list</CardHeader>
+              <CardHeader>Driver</CardHeader>
               <CardBody>
                 <Link to={"/driver/create"}>
                   <Button color="success" size="sm">

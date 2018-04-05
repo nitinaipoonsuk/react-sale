@@ -53,7 +53,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="text-input">Fistname</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
             <Input
               type="text"
               id="firstname"
@@ -67,7 +67,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="text-input">Lastname</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
           <Input
               type="text"
               id="lastname"
@@ -81,7 +81,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="text-input">Tel.</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
           <Input
               type="text"
               id="tel"
@@ -95,7 +95,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="text-input">Address</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
           <Input
               type="text"
               id="address"
@@ -109,7 +109,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="select">Vehicle driver type</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
             <Input type="select" name="select" id="select">
               <option value="0">Please select</option>
               <option value="1">Private car</option>
@@ -123,7 +123,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="text-input">No</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
           <Input
               type="text"
               id="no"
@@ -137,7 +137,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="text-input">Expired date</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
           <Input
               type="text"
               id="expiredDate"
@@ -151,7 +151,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="select">Subscribe</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
             <Input type="select" name="select" id="select">
               <option value="0">Please select</option>
               <option value="1">1 Year</option>
@@ -164,7 +164,7 @@ export class DriveFrom extends Component {
           <Col md="5" align="right">
             <Label htmlFor="text-input">Note</Label>
           </Col>
-          <Col xs="12" md="5">
+          <Col xs="12" md="3">
           <Input
               type="text"
               id="remark"
@@ -174,8 +174,8 @@ export class DriveFrom extends Component {
             />
           </Col>
         </FormGroup>
-        <FormGroup row>
-          <Col xs="12" md="6">
+        <FormGroup row align="center">
+          <Col >
             <Button type="submit" color="success">
               Save
             </Button>{" "}

@@ -2,20 +2,18 @@ import React, { Component } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import { inject } from "mobx-react";
 import _ from "lodash";
+import BackButton from "../../components/Buttons/BackButton";
+import UserFrom from "./UserFrom";
 
-import BackButton from "../../../components/Buttons/BackButton";
-import { DriveFrom } from "../DriveFrom";
-
-@inject("driverStore")
-export class EditDriver extends Component {
+@inject("userStore")
+class EditUser extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
-    const { driverData } = this.props.driverStore;
-    let data = _.filter(driverData, d => {
+    const { userData } = this.props.userStore;
+    let data = _.filter(userData, d => {
       return d.id == this.props.location.data.id;
     });
 
@@ -30,10 +28,10 @@ export class EditDriver extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Edit driver</h4>
+            <h4>Edit user</h4>
           </CardHeader>
           <CardBody>
-            <DriveFrom data={data[0]} />
+            <UserFrom data={data[0]}/>
           </CardBody>
           <CardFooter>
             <BackButton pathname={location} />
@@ -44,4 +42,4 @@ export class EditDriver extends Component {
   }
 }
 
-export default EditDriver;
+export default EditUser;

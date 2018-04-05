@@ -8,6 +8,7 @@ const routes = {
   '/driver': 'Driver',
   '/driver/createdriver': 'CreateDriver',
   '/driver/editdriver': 'EditDriver',
-  '/driver/deletedriver': 'DeleteDriver'
+  '/driver/deletedriver': 'DeleteDriver',
+  '/user': 'User',
 };
 export default routes;

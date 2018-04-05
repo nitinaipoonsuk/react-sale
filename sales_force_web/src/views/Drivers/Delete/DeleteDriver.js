@@ -14,7 +14,7 @@ import {
   Input,
   Label
 } from "reactstrap";
-import BackButton from "../../Buttons/BackButton/BackButton";
+import BackButton from "../../../components/Buttons/BackButton";
 import { inject } from "mobx-react";
 import _ from "lodash";
 
@@ -126,8 +126,8 @@ export class DeleteDriver extends Component {
                   <p className="form-control-static">{data[0].remark}</p>
                 </Col>
               </FormGroup>
-              <FormGroup row>
-                <Col xs="12" md="6">
+              <FormGroup row align="center">
+                <Col >
                   <Button onClick={() => this.handleSubmit(data[0].id)} color="danger">
                     Delete
                   </Button>

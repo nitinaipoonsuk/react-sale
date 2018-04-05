@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import { inject } from "mobx-react";
 import _  from "lodash";
 
-import BackButton from "../../Buttons/BackButton/BackButton";
+import BackButton from "../../../components/Buttons/BackButton"
 import { From } from "../Form/Form";
 
 @inject("customerStore")

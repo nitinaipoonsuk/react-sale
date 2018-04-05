@@ -155,15 +155,16 @@ export class From extends Component {
             />
           </Col>
         </FormGroup>
-        <FormGroup row />
-        <Col xs="12" md="6">
-          <Button onClick={this.handleSubmit} color="success">
-            Save
-          </Button>{" "}
-          <Button type="button" color="secondary">
-            Cancel
-          </Button>{" "}
-        </Col>
+        <FormGroup row align="center">
+          <Col>
+            <Button onClick={this.handleSubmit} color="success">
+              Save
+            </Button>{" "}
+            <Button type="button" color="secondary">
+              Cancel
+            </Button>{" "}
+          </Col>
+        </FormGroup>
       </Form>
     );
   }
