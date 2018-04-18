@@ -6,9 +6,13 @@ const routes = {
   '/customer/edit': 'Edit',
   '/customer/delete': 'Delete',
   '/driver': 'Driver',
-  '/driver/createdriver': 'CreateDriver',
-  '/driver/editdriver': 'EditDriver',
-  '/driver/deletedriver': 'DeleteDriver',
+  '/driver/create': 'Create',
+  '/driver/edit': 'Edit',
+  '/driver/delete': 'Delete',
   '/user': 'User',
+  '/user/create': 'Create',
+  '/user/edit': 'Edit',
+  '/user/delete': 'Delete',
+  '/user/test': 'Test',
 };
 export default routes;

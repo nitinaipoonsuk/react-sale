@@ -107,8 +107,9 @@ class CustomerTable extends React.Component {
             <br />
             <div>
               <ReactTable
-                loading={customerStore.loading}
+                loading={customerStore.loading}                
                 data={datas}
+                noDataText="No Database"
                 columns={columns}
                 defaultPageSize={14}
                 className="-striped -highlight"

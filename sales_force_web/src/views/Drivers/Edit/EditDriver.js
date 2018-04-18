@@ -30,7 +30,7 @@ export class EditDriver extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Edit driver</h4>
+            <h4>Edit Driver</h4>
           </CardHeader>
           <CardBody>
             <DriveFrom data={data[0]} />

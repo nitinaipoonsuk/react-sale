@@ -12,8 +12,11 @@ class UserStore {
 
   getUser() {
     this._api.get(`/user/`).then(Response => {
-      this.setUser(Response);
-      //console.log(Response)
+      if (!Response) {
+        this.setUser(this.userData);
+      } else {
+        this.setUser(Response);
+      }
     });
   }
 

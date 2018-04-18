@@ -134,6 +134,7 @@ class Driver extends Component {
                 <ReactTable
                   data={datas}
                   columns={columns}
+                  noDataText="No Database"
                   defaultPageSize={14}
                   className="-striped -highlight"
                   noDataText="Oh Noes!"

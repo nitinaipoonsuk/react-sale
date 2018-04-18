@@ -19,28 +19,49 @@ export class From extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      firstname: "",
+      lastname: "",
+      phoneNumber: "",
+      address: "",
+      zipcode: ""
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeFirstname = this.handleChangeFirstname.bind(this);
+    this.handleChangeLastname = this.handleChangeLastname.bind(this);
+    this.handleChangePhone = this.handleChangePhone.bind(this);
+    this.handleChangeAddress = this.handleChangeAddress.bind(this);
+    this.handleChangeZipcode = this.handleChangeZipcode.bind(this);
   }
 
-  data = {
-    firstname: "",
-    lastname: "",
-    phoneNumber: "",
-    address: "",
-    zipcode: ""
-  };
-
   componentWillMount() {
-    if (this.props.data) this.data = this.props.data;
+    if (this.props.data) this.state = this.props.data;
+  }
+
+  handleChangeFirstname(e) {
+    this.setState({ firstname: e.target.value });
+  }
+  handleChangeLastname(e) {
+    this.setState({ lastname: e.target.value });
+  }
+  handleChangePhone(e) {
+    this.setState({ phoneNumber: e.target.value });
+  }
+  handleChangeAddress(e) {
+    this.setState({ address: e.target.value });
+  }
+  handleChangeZipcode(e) {
+    this.setState({ zipcode: e.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    console.log(this.data);
+    console.log(this.state);
 
-    if (this.data.id) this.props.customerStore.edit(this.data);
-    else this.props.customerStore.create(this.data);
+    if (this.state.id) this.props.customerStore.edit(this.state);
+    else this.props.customerStore.create(this.state);
   }
 
   render() {
@@ -55,8 +76,8 @@ export class From extends Component {
               type="text"
               id="firstname"
               name="firstname"
-              value={this.data.firstname}
-              onChange={event => (this.data.firstname = event.target.value)}
+              value={this.state.firstname}
+              onChange={this.handleChangeFirstname}
             />
           </Col>
         </FormGroup>
@@ -69,8 +90,8 @@ export class From extends Component {
               type="text"
               id="lastname"
               name="lastname"
-              value={this.data.lastname}
-              onChange={event => (this.data.lastname = event.target.value)}
+              value={this.state.lastname}
+              onChange={this.handleChangeLastname}
             />
           </Col>
         </FormGroup>
@@ -83,8 +104,8 @@ export class From extends Component {
               type="text"
               id="phoneNumber"
               name="phoneNumber"
-              value={this.data.phoneNumber}
-              onChange={event => (this.data.phoneNumber = event.target.value)}
+              value={this.state.phoneNumber}
+              onChange={this.handleChangePhone}
             />
           </Col>
         </FormGroup>
@@ -97,8 +118,8 @@ export class From extends Component {
               type="text"
               id="address"
               name="address"
-              value={this.data.address}
-              onChange={event => (this.data.address = event.target.value)}
+              value={this.state.address}
+              onChange={this.handleChangeAddress}
             />
           </Col>
         </FormGroup>
@@ -150,8 +171,8 @@ export class From extends Component {
               type="text"
               id="zipcode"
               name="zipcode"
-              value={this.data.zipcode}
-              onChange={event => (this.data.zipcode = event.target.value)}
+              value={this.state.zipcode}
+              onChange={this.handleChangeZipcode}
             />
           </Col>
         </FormGroup>

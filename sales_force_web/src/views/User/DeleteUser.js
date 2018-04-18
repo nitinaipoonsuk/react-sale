@@ -47,7 +47,7 @@ class DeleteUser extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Delete</h4>
+            <h4>Delete User</h4>
           </CardHeader>
           <CardBody>
             <Form>

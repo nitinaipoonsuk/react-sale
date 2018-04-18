@@ -20,7 +20,7 @@ export class CreateDriver extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Create driver</h4>
+            <h4>Create Driver</h4>
           </CardHeader>
           <CardBody>
             <DriveFrom />

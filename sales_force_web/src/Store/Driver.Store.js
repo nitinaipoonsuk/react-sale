@@ -11,9 +11,12 @@ class DriverStore {
   @observable driverData = [];
 
   getDriver() {
-    this._api.get(`/driver/`).then(Response => {
-      this.setDriver(Response);
-      //console.log(Response)
+    this._api.get(`/driver/`).then(Response => {    
+      if (!Response) {
+        this.setDriver(this.driverData);
+      } else {
+        this.setDriver(Response);
+      }
     });
   }
 

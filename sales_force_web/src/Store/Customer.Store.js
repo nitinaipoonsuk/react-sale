@@ -11,8 +11,12 @@ class CustomerStore {
   @observable customerData = [];
 
   getCustomer() {
-    this._api.get(`/customer/`).then(Response => {
-      this.setCustomer(Response);
+    this._api.get(`/customer/`).then(Response => {     
+      if (!Response) {
+        this.setCustomer(this.customerData);
+      } else {
+        this.setCustomer(Response);
+      }
     });
   }
 
@@ -60,7 +64,7 @@ class CustomerStore {
   @action
   delete(id) {
     console.log(id);
-    this._api.delete(`/customer/delete/${id}`).then(Response => {      
+    this._api.delete(`/customer/delete/${id}`).then(Response => {
       console.log(Response);
     });
   }

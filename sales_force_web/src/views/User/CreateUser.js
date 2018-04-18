@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import BackButton from "../../components/Buttons/BackButton";
-import UserFrom from "./UserFrom";
+import UserForm from "./UserForm";
 //import { UserFrom } from "../UserFrom";
 
 class CreateUser extends Component {
@@ -19,10 +19,10 @@ class CreateUser extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Create user</h4>
+            <h4>Create User</h4>
           </CardHeader>
           <CardBody>
-            <UserFrom />
+            <UserForm />
           </CardBody>
           <CardFooter>
             <BackButton pathname={location} />

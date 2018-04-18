@@ -24,6 +24,7 @@ import User from '../../views/User/User';
 import CreateUser from '../../views/User/CreateUser';
 import EditUser from '../../views/User/EditUser';
 import DeleteUser from '../../views/User/DeleteUser';
+import Test from '../../views/User/Test'
 
 
 class Full extends Component {
@@ -50,7 +51,8 @@ class Full extends Component {
                 <Route path="/user/delete" name="Delete" component={DeleteUser} />          
                 <Route path="/user/edit" name="Edit" component={EditUser} />
                 <Route path="/user/create" name="Create" component={CreateUser} />
-                <Route path="/user" name="User" component={User} />                
+                <Route path="/user/test" name="Test" component={Test}/>   
+                <Route path="/user" name="User" component={User} />    
                 <Redirect from="/" to="/dashboard" />
               </Switch>
             </Container>

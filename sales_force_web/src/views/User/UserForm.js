@@ -18,26 +18,49 @@ import { observable, action } from "mobx";
 class UserFrom extends Component {
   constructor(props) {
     super(props);
-  }
 
-  data = {
-    username: "",
-    email: "",
-    address: ""
-  };
+    this.state = {
+      username: "",
+      email: "",
+      address: ""
+    };
+
+    this.handleChangeUsername = this.handleChangeUsername.bind(this);
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handelChangeAddress = this.handelChangeAddress.bind(this);
+  }
 
   componentWillMount() {
-    if (this.props.data) this.data = this.props.data;
+    if (this.props.data) this.state = this.props.data;
   }
 
-  handleSubmit(event) {
+  handleChangeUsername(e) {
+    console.log(e.target.value);
+    this.setState({
+      username: e.target.value
+    });
+  }
+
+  handleChangeEmail(e) {
+    console.log(e.target.value);
+    this.setState({
+      email: e.target.value
+    });
+  }
+
+  handelChangeAddress(e) {
+    console.log(e.target.value);
+    this.setState({ address: e.target.value });
+  }
+
+  handleSubmit = event => {
     event.preventDefault();
 
-    console.log(this.data);
+    console.log(this.state);
 
     if (this.data.id) this.props.UserStore.edit(this.data);
     else this.props.UserStore.create(this.data);
-  }
+  };
 
   render() {
     return (
@@ -49,10 +72,10 @@ class UserFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="firstname"
-              name="firstname"
-              value={this.data.username}
-              onChange={event => (this.data.username = event.target.value)}
+              id="username"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChangeUsername}
             />
           </Col>
         </FormGroup>
@@ -63,10 +86,10 @@ class UserFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="lastname"
-              name="lastname"
-              value={this.data.email}
-              onChange={event => (this.data.email = event.target.value)}
+              id="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChangeEmail}
             />
           </Col>
         </FormGroup>
@@ -77,16 +100,16 @@ class UserFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="lastname"
-              name="lastname"
-              value={this.data.address}
-              onChange={event => (this.data.address = event.target.value)}
+              id="address"
+              name="address"
+              value={this.state.address}
+              onChange={this.handelChangeAddress}
             />
           </Col>
         </FormGroup>
         <FormGroup row align="center">
-          <Col >
-            <Button type="submit" color="success">
+          <Col>
+            <Button onClick={this.handleSubmit} color="success">
               Save
             </Button>{" "}
             <Button color="secondary">Cancel</Button>{" "}

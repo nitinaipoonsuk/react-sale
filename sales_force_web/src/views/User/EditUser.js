@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import { inject } from "mobx-react";
 import _ from "lodash";
 import BackButton from "../../components/Buttons/BackButton";
-import UserFrom from "./UserFrom";
+import UserForm from "./UserForm";
 
 @inject("userStore")
 class EditUser extends Component {
@@ -28,10 +28,10 @@ class EditUser extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Edit user</h4>
+            <h4>Edit User</h4>
           </CardHeader>
           <CardBody>
-            <UserFrom data={data[0]}/>
+            <UserForm data={data[0]}/>
           </CardBody>
           <CardFooter>
             <BackButton pathname={location} />

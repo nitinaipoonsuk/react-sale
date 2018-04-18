@@ -50,7 +50,7 @@ export class DeleteDriver extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Delete driver</h4>
+            <h4>Delete Driver</h4>
           </CardHeader>
           <CardBody>
             <Form>

@@ -19,22 +19,86 @@ export class DriveFrom extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      firstname: "",
+      lastname: "",
+      address: "",
+      tel: "",
+      vehicledrivertype: "",
+      no: "",
+      expireddate: "",
+      subscribe: "",
+      remark: ""
+    };
+
+    this.handleChangeFirstname = this.handleChangeFirstname.bind(this);
+    this.handleChangeLirstname = this.handleChangeLirstname.bind(this);
+    this.handleChangeAddress = this.handleChangeAddress.bind(this);
+    this.handleChangeTel = this.handleChangeTel.bind(this);
+    this.handleChangeVehicle = this.handleChangeVehicle.bind(this);
+    this.handleChangeNo = this.handleChangeNo.bind(this);
+    this.handleChangeExpireddate = this.handleChangeExpireddate.bind(this);
+    this.handleChangeSubscribe = this.handleChangeSubscribe.bind(this);
+    this.handleChangeRemark = this.handleChangeRemark.bind(this);
   }
 
-  data = {
-    firstname: "",
-    lastname: "",
-    address: "",
-    tel: "",
-    vehicledrivertype: "",
-    no: "",
-    expireddate: "",
-    subscribe: "",
-    remark: ""
-  };
+  handleChangeFirstname(e) {
+    this.setState({
+      firstname: e.target.value
+    });
+  }
+
+  handleChangeLirstname(e) {
+    this.setState({
+      lastname: e.target.value
+    });
+  }
+
+  handleChangeAddress(e) {
+    this.setState({
+      address: e.target.value
+    });
+  }
+
+  handleChangeTel(e) {
+    this.setState({
+      tel: e.target.value
+    });
+  }
+
+  handleChangeVehicle(e) {
+    this.setState({
+      vehicledrivertype: e.target.value
+    });
+  }
+
+  handleChangeNo(e) {
+    this.setState({
+      no: e.target.value
+    });
+  }
+
+  handleChangeExpireddate(e) {
+    this.setState({
+      expireddate: e.target.value
+    });
+  }
+
+  handleChangeSubscribe(e) {
+    this.setState({
+      subscribe: e.target.value
+    });
+  }
+
+  handleChangeRemark(e) {
+    this.setState({
+      remark: e.target.value
+    });
+  }
 
   componentWillMount() {
-    if (this.props.data) this.data = this.props.data;
+    if (this.props.data) this.state = this.props.data;
   }
 
   handleSubmit(event) {
@@ -58,8 +122,8 @@ export class DriveFrom extends Component {
               type="text"
               id="firstname"
               name="firstname"
-              value={this.data.firstname}
-              onChange={event => (this.data.firstname = event.target.value)}
+              value={this.state.firstname}
+              onChange={this.handleChangeFirstname}
             />
           </Col>
         </FormGroup>
@@ -68,12 +132,12 @@ export class DriveFrom extends Component {
             <Label htmlFor="text-input">Lastname</Label>
           </Col>
           <Col xs="12" md="3">
-          <Input
+            <Input
               type="text"
               id="lastname"
               name="lastname"
-              value={this.data.lastname}
-              onChange={event => (this.data.lastname = event.target.value)}
+              value={this.state.lastname}
+              onChange={this.handleChangeLirstname}
             />
           </Col>
         </FormGroup>
@@ -82,12 +146,12 @@ export class DriveFrom extends Component {
             <Label htmlFor="text-input">Tel.</Label>
           </Col>
           <Col xs="12" md="3">
-          <Input
+            <Input
               type="text"
               id="tel"
               name="tel"
-              value={this.data.tel}
-              onChange={event => (this.data.tel = event.target.value)}
+              value={this.state.tel}
+              onChange={this.handleChangeTel}
             />
           </Col>
         </FormGroup>
@@ -96,12 +160,12 @@ export class DriveFrom extends Component {
             <Label htmlFor="text-input">Address</Label>
           </Col>
           <Col xs="12" md="3">
-          <Input
+            <Input
               type="text"
               id="address"
               name="address"
-              value={this.data.address}
-              onChange={event => (this.data.address = event.target.value)}
+              value={this.state.address}
+              onChange={this.handleChangeAddress}
             />
           </Col>
         </FormGroup>
@@ -124,12 +188,12 @@ export class DriveFrom extends Component {
             <Label htmlFor="text-input">No</Label>
           </Col>
           <Col xs="12" md="3">
-          <Input
+            <Input
               type="text"
               id="no"
               name="no"
-              value={this.data.no}
-              onChange={event => (this.data.no = event.target.value)}
+              value={this.state.no}
+              onChange={this.handleChangeNo}
             />
           </Col>
         </FormGroup>
@@ -138,12 +202,12 @@ export class DriveFrom extends Component {
             <Label htmlFor="text-input">Expired date</Label>
           </Col>
           <Col xs="12" md="3">
-          <Input
+            <Input
               type="text"
-              id="expiredDate"
-              name="expiredDate"
-              value={this.data.expiredDate}
-              onChange={event => (this.data.expiredDate = event.target.value)}
+              id="expireddate"
+              name="expireddate"
+              value={this.state.expireddate}
+              onChange={this.handleChangeExpireddate}
             />
           </Col>
         </FormGroup>
@@ -165,18 +229,18 @@ export class DriveFrom extends Component {
             <Label htmlFor="text-input">Note</Label>
           </Col>
           <Col xs="12" md="3">
-          <Input
+            <Input
               type="text"
               id="remark"
               name="remark"
-              value={this.data.remark}
-              onChange={event => (this.data.remark = event.target.value)}
+              value={this.state.remark}
+              onChange={this.handleChangeRemark}
             />
           </Col>
         </FormGroup>
         <FormGroup row align="center">
-          <Col >
-            <Button type="submit" color="success">
+          <Col>
+            <Button onClick={this.handleSubmit} color="success">
               Save
             </Button>{" "}
             <Button color="secondary">Cancel</Button>{" "}

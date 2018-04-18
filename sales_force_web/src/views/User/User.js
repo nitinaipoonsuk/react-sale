@@ -102,6 +102,7 @@ class User extends Component {
                 </Link>
                 <ReactTable
                   data={datas}
+                  noDataText="No Database"
                   columns={columns}
                   defaultPageSize={14}
                   className="-striped -highlight"
