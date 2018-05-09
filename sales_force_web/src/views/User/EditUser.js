@@ -1,26 +1,29 @@
 import React, { Component } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
-import { inject } from "mobx-react";
+import { connect } from "react-redux";
 import _ from "lodash";
+
 import BackButton from "../../components/Buttons/BackButton";
 import UserForm from "./UserForm";
+import { selectData } from "../../Redux/Actions/UserAction";
 
-@inject("userStore")
 class EditUser extends Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
-    const { userData } = this.props.userStore;
-    let data = _.filter(userData, d => {
-      return d.id == this.props.location.data.id;
+  render() {    
+    const { userModel } = this.props;    
+    
+    let data = _.filter(userModel, u => {
+      return u.id == this.props.location.data.id;
     });
-
     console.log("data form _lodash: ", data[0]);
 
+    this.props.dispatch(selectData(data[0]));
+    
     const location = {
-      pathname: "/driver",
+      pathname: "/user",
       state: { fromDashboard: true }
     };
 
@@ -31,7 +34,7 @@ class EditUser extends Component {
             <h4>Edit User</h4>
           </CardHeader>
           <CardBody>
-            <UserForm data={data[0]}/>
+          <UserForm />
           </CardBody>
           <CardFooter>
             <BackButton pathname={location} />
@@ -42,4 +45,10 @@ class EditUser extends Component {
   }
 }
 
-export default EditUser;
+const mapStateToProps = state => {
+  return {
+    userModel: state.userReducer
+  };
+};
+
+export default connect(mapStateToProps)(EditUser);

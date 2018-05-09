@@ -1,6 +1,6 @@
 const routes = {
   '/': 'Home',
-  '/dashboard': 'Dashboard',
+  '/dashboard': 'Dashboard',  
   '/customer': 'Customer',
   '/customer/create': 'Create',
   '/customer/edit': 'Edit',
@@ -13,6 +13,6 @@ const routes = {
   '/user/create': 'Create',
   '/user/edit': 'Edit',
   '/user/delete': 'Delete',
-  '/user/test': 'Test',
+  '/job':'Job',
 };
 export default routes;

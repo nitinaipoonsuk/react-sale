@@ -1,16 +1,15 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
-import { observer, inject } from "mobx-react";
-import { observable, action } from "mobx";
 import { Row, Col, Card, CardHeader, CardBody, Button } from "reactstrap";
+import { connect } from "react-redux";
+
+import { loadCustomer } from "../../../Redux/Actions/CustomerAction";
 
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import { From } from "../Form/Form";
 
-@inject("customerStore")
-@observer
 class CustomerTable extends React.Component {
   constructor(props) {
     super(props);
@@ -19,26 +18,31 @@ class CustomerTable extends React.Component {
   }
 
   componentWillMount() {
-    this.props.customerStore.getCustomer();
-  }
-
-  handleButtonClick(e) {
-    console.log("e:", e.original);
-    //console.log("rowInfo: ",rowInfo);
-    this.props.customerStore.setCustomer(e.original);
+    this.props.dispatch(loadCustomer());
   }
 
   render() {
-    const { customerStore } = this.props;
+    const { customerModel } = this.props;
+    console.log(customerModel);
     let datas = [];
-    customerStore.customerData.forEach(s => {
-      datas.push({
+    let mappingModel = [];
+    if (customerModel) {
+      datas = Object.keys(customerModel).map(id => customerModel[id]);
+      console.log("in If : ",datas);
+    }
+
+    datas.forEach(s => {
+      console.log(s);
+
+      mappingModel.push({
         id: s.id,
         name: s.firstname + " " + s.lastname,
         address: s.address,
         phone: s.phoneNumber
       });
     });
+
+    console.log(mappingModel);
 
     const EditButton = filter => (
       <Link
@@ -107,8 +111,7 @@ class CustomerTable extends React.Component {
             <br />
             <div>
               <ReactTable
-                loading={customerStore.loading}                
-                data={datas}
+                data={mappingModel}
                 noDataText="No Database"
                 columns={columns}
                 defaultPageSize={14}
@@ -122,4 +125,10 @@ class CustomerTable extends React.Component {
   }
 }
 
-export default CustomerTable;
+const mapStateToProps = state => {
+  return {
+    customerModel: state.customerReducer
+  };
+};
+
+export default connect(mapStateToProps)(CustomerTable);

@@ -14,11 +14,12 @@ import {
   Input,
   Label
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import BackButton from "../../components/Buttons/BackButton";
-import { inject } from "mobx-react";
 import _ from "lodash";
+import { connect } from "react-redux";
+import { deleteUser } from "../../Redux/Actions/UserAction";
 
-@inject("userStore")
 class DeleteUser extends Component {
   constructor(props) {
     super(props);
@@ -27,13 +28,14 @@ class DeleteUser extends Component {
 
   handleSubmit(id) {
     event.preventDefault();
-    this.props.userStore.delete(id);
+    this.props.dispatch(deleteUser(id));
   }
 
   render() {
-    const { userData } = this.props.userStore;
-    let data = _.filter(userData, c => {
-      return c.id == this.props.location.data.id;
+    const { userModel } = this.props;
+
+    let data = _.filter(userModel, u => {
+      return u.id == this.props.location.data.id;
     });
 
     console.log(data[0]);
@@ -52,7 +54,7 @@ class DeleteUser extends Component {
           <CardBody>
             <Form>
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="text-input">Username</Label>
                 </Col>
                 <Col xs="12" md="3">
@@ -60,7 +62,7 @@ class DeleteUser extends Component {
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="text-input">Email</Label>
                 </Col>
                 <Col xs="12" md="3">
@@ -68,19 +70,24 @@ class DeleteUser extends Component {
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Col md="5" align="right">
-                  <Label htmlFor="text-input">Address</Label>
+                <Col md="6" align="right">
+                  <Label htmlFor="text-input">Phone</Label>
                 </Col>
                 <Col xs="12" md="3">
-                  <p className="form-control-static">{data[0].address}</p>
+                  <p className="form-control-static">{data[0].phone}</p>
                 </Col>
               </FormGroup>
               <FormGroup row align="center">
                 <Col>
-                  <Button type="submit" color="success">
-                    Save
-                  </Button>{" "}
-                  <Button color="secondary">Cancel</Button>{" "}
+                  <Link to={location}>
+                    {" "}
+                    <Button
+                      onClick={() => this.handleSubmit(data[0].id)}
+                      color="danger"
+                    >
+                      Delete
+                    </Button>
+                  </Link>
                 </Col>
               </FormGroup>
             </Form>
@@ -94,4 +101,10 @@ class DeleteUser extends Component {
   }
 }
 
-export default DeleteUser;
+const mapStateToProps = state => {
+  return {
+    userModel: state.userReducer
+  };
+};
+
+export default connect(mapStateToProps)(DeleteUser);

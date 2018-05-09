@@ -10,6 +10,10 @@ export default {
       }*/
     },
     {
+      name: "Job",
+      url: "/job"
+    },
+    {
       name: "Customer",
       url: "/customer"
     },

@@ -1,41 +1,31 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Card, CardHeader, CardBody, Button } from "reactstrap";
-import { observer, inject } from "mobx-react";
-import { observable, action } from "mobx";
+import { connect } from "react-redux";
+
+import { loadUser, selectData } from "../../Redux/Actions/UserAction";
 
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
-@inject("userStore")
-@observer
 class User extends Component {
   constructor(props) {
     super(props);
   }
 
   componentWillMount() {
-    this.props.userStore.getUser();
-  }
-
-  handleButtonClick(e) {
-    console.log("e:", e.original);
-    //console.log("rowInfo: ",rowInfo);
-    this.props.userStore.setUser(e.original);
+    this.props.dispatch(loadUser());
   }
 
   render() {
-    const { userStore } = this.props;
+    const { userModel } = this.props;
     let datas = [];
-    userStore.userData.forEach(u => {
-      datas.push({
-        id: u.id,
-        username: u.username,
-        phone: u.phone,
-        email: u.email
-      });
-    });
+
+    if (userModel) {
+      datas = Object.keys(userModel).map(id => userModel[id]);
+      //console.log(datas);
+    }
 
     const EditButton = filter => (
       <Link
@@ -43,7 +33,7 @@ class User extends Component {
           pathname: "/user/edit",
           search: `?id=${filter.original.id}`,
           data: filter.original
-        }}
+        }}        
       >
         <Button color="warning" size="sm">
           <i className="icon-list" />
@@ -106,7 +96,7 @@ class User extends Component {
                   columns={columns}
                   defaultPageSize={14}
                   className="-striped -highlight"
-                  noDataText="Oh Noes!"
+                  noDataText="No Database"
                 />
               </CardBody>
             </Card>
@@ -116,4 +106,11 @@ class User extends Component {
     );
   }
 }
-export default User;
+
+const mapStateToProps = state => {
+  return {
+    userModel: state.userReducer
+  };
+};
+
+export default connect(mapStateToProps)(User);

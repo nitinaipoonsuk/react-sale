@@ -82,7 +82,7 @@ class FetchAPI {
 
   get(url) {
     return axios
-      .get(`${webApiBaseUrl + url}`, {})
+      .get(`${webApiBaseUrl + url}`, {})    
       .then(response => {
         //console.log(response.data.data)
         return response.data.data;

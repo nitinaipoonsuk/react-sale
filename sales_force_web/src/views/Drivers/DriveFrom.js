@@ -32,68 +32,14 @@ export class DriveFrom extends Component {
       remark: ""
     };
 
-    this.handleChangeFirstname = this.handleChangeFirstname.bind(this);
-    this.handleChangeLirstname = this.handleChangeLirstname.bind(this);
-    this.handleChangeAddress = this.handleChangeAddress.bind(this);
-    this.handleChangeTel = this.handleChangeTel.bind(this);
-    this.handleChangeVehicle = this.handleChangeVehicle.bind(this);
-    this.handleChangeNo = this.handleChangeNo.bind(this);
-    this.handleChangeExpireddate = this.handleChangeExpireddate.bind(this);
-    this.handleChangeSubscribe = this.handleChangeSubscribe.bind(this);
-    this.handleChangeRemark = this.handleChangeRemark.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChangeFirstname(e) {
+  handleChange(e) {
+    const value = e.target.value;
+    const name = e.target.name;
     this.setState({
-      firstname: e.target.value
-    });
-  }
-
-  handleChangeLirstname(e) {
-    this.setState({
-      lastname: e.target.value
-    });
-  }
-
-  handleChangeAddress(e) {
-    this.setState({
-      address: e.target.value
-    });
-  }
-
-  handleChangeTel(e) {
-    this.setState({
-      tel: e.target.value
-    });
-  }
-
-  handleChangeVehicle(e) {
-    this.setState({
-      vehicledrivertype: e.target.value
-    });
-  }
-
-  handleChangeNo(e) {
-    this.setState({
-      no: e.target.value
-    });
-  }
-
-  handleChangeExpireddate(e) {
-    this.setState({
-      expireddate: e.target.value
-    });
-  }
-
-  handleChangeSubscribe(e) {
-    this.setState({
-      subscribe: e.target.value
-    });
-  }
-
-  handleChangeRemark(e) {
-    this.setState({
-      remark: e.target.value
+      [name]: value
     });
   }
 
@@ -104,10 +50,10 @@ export class DriveFrom extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    console.log(this.data);
+    console.log(this.state);
 
-    if (this.data.id) this.props.driverStore.edit(this.data);
-    else this.props.driverStore.create(this.data);
+    if (this.state.id) this.props.driverStore.edit(this.state);
+    else this.props.driverStore.create(this.state);
   }
 
   render() {
@@ -120,10 +66,9 @@ export class DriveFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="firstname"
               name="firstname"
               value={this.state.firstname}
-              onChange={this.handleChangeFirstname}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -134,10 +79,9 @@ export class DriveFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="lastname"
               name="lastname"
               value={this.state.lastname}
-              onChange={this.handleChangeLirstname}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -148,10 +92,9 @@ export class DriveFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="tel"
               name="tel"
               value={this.state.tel}
-              onChange={this.handleChangeTel}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -162,10 +105,9 @@ export class DriveFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="address"
               name="address"
               value={this.state.address}
-              onChange={this.handleChangeAddress}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -190,10 +132,9 @@ export class DriveFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="no"
               name="no"
               value={this.state.no}
-              onChange={this.handleChangeNo}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -204,10 +145,9 @@ export class DriveFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="expireddate"
               name="expireddate"
               value={this.state.expireddate}
-              onChange={this.handleChangeExpireddate}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -231,10 +171,9 @@ export class DriveFrom extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="remark"
               name="remark"
               value={this.state.remark}
-              onChange={this.handleChangeRemark}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>

@@ -10,11 +10,10 @@ import {
   Input,
   Label
 } from "reactstrap";
-import { observer, inject } from "mobx-react";
-import { observable, action } from "mobx";
 
-@inject("customerStore")
-@observer
+import { connect } from "react-redux";
+import {  } from "../../../Redux/Actions/CustomerAction";
+
 export class From extends Component {
   constructor(props) {
     super(props);
@@ -28,36 +27,23 @@ export class From extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChangeFirstname = this.handleChangeFirstname.bind(this);
-    this.handleChangeLastname = this.handleChangeLastname.bind(this);
-    this.handleChangePhone = this.handleChangePhone.bind(this);
-    this.handleChangeAddress = this.handleChangeAddress.bind(this);
-    this.handleChangeZipcode = this.handleChangeZipcode.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
     if (this.props.data) this.state = this.props.data;
   }
 
-  handleChangeFirstname(e) {
-    this.setState({ firstname: e.target.value });
-  }
-  handleChangeLastname(e) {
-    this.setState({ lastname: e.target.value });
-  }
-  handleChangePhone(e) {
-    this.setState({ phoneNumber: e.target.value });
-  }
-  handleChangeAddress(e) {
-    this.setState({ address: e.target.value });
-  }
-  handleChangeZipcode(e) {
-    this.setState({ zipcode: e.target.value });
+  handleChange(e) {
+    const value = e.target.value;
+    const name = e.target.name;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-
     console.log(this.state);
 
     if (this.state.id) this.props.customerStore.edit(this.state);
@@ -74,10 +60,9 @@ export class From extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="firstname"
               name="firstname"
               value={this.state.firstname}
-              onChange={this.handleChangeFirstname}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -88,10 +73,9 @@ export class From extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="lastname"
               name="lastname"
               value={this.state.lastname}
-              onChange={this.handleChangeLastname}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -102,10 +86,9 @@ export class From extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="phoneNumber"
               name="phoneNumber"
               value={this.state.phoneNumber}
-              onChange={this.handleChangePhone}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -116,10 +99,9 @@ export class From extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="address"
               name="address"
               value={this.state.address}
-              onChange={this.handleChangeAddress}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>
@@ -169,10 +151,9 @@ export class From extends Component {
           <Col xs="12" md="3">
             <Input
               type="text"
-              id="zipcode"
               name="zipcode"
               value={this.state.zipcode}
-              onChange={this.handleChangeZipcode}
+              onChange={this.handleChange}
             />
           </Col>
         </FormGroup>

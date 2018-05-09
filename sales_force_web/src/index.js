@@ -13,6 +13,8 @@ import 'simple-line-icons/css/simple-line-icons.css';
 import '../scss/style.scss'
 // Temp fix for reactstrap
 import '../scss/core/_dropdown-menu-right.scss'
+// Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.css';
 
 // Containers
 import Full from './containers/Full/'
