@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "@types/whatwg-fetch": "0.0.33",
-    "availity-reactstrap-validation": "^2.0.2",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",

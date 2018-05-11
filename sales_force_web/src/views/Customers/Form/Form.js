@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import {
-  Row,
+import {  
   Col,
   Button,
   Form,
-  FormGroup,
-  FormText,
-  abel,
+  FormGroup,   
   Input,
   Label
 } from "reactstrap";

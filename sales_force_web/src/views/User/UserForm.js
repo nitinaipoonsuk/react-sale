@@ -1,21 +1,25 @@
 import React, { Component } from "react";
-import { Row, Col, Button, FormGroup, FormText, abel, Label } from "reactstrap";
 import {
-  AvForm,
-  AvInput,
-  AvGroup,
-  AvFeedback,
-  AvField 
-} from "availity-reactstrap-validation";
+  Col,
+  Button,
+  FormGroup,
+  Label,
+  Form,
+  Input,
+  FormFeedback
+} from "reactstrap";
+
+import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 import { createUser, editUser } from "../../Redux/Actions/UserAction";
 import { validtion } from "../../Redux/Actions/HelperAction";
+import { flow } from "mobx";
 
-class UserFrom extends Component {
+export class UserFrom extends Component {
   constructor(props) {
     super(props);
-    // this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleMappingModel = this.handleMappingModel.bind(this);
@@ -83,19 +87,13 @@ class UserFrom extends Component {
     }
   }
 
-  handleSubmit(event, errors, values) {
+  handleSubmit(event) {
     event.preventDefault();
     console.log("Submit");
-    console.log(event);
-    console.log(errors);
-    console.log(values);
+    console.log(event.target.checkValidity());
 
-    if (errors.length > 0) {
-      return;
-    } else {
-      if (this.state.id) this.props.dispatch(editUser(this.state));
-      else this.props.dispatch(createUser(this.state));
-    }
+    if (this.state.id) this.props.dispatch(editUser(this.state));
+    else this.props.dispatch(createUser(this.state));
 
     /*if (this.state.id) this.props.dispatch(editUser(this.state));
     else this.props.dispatch(createUser(this.state));*/
@@ -109,66 +107,86 @@ class UserFrom extends Component {
     const userModel = this.state;
 
     return (
-      <AvForm onInvalidSubmit={this.handleSubmit}>
-        <AvGroup row>
+      <Form onSubmit={this.handleSubmit}>
+        <FormGroup row>
           <Col md="5" align="right">
             <Label htmlFor="text-input">Username</Label>
           </Col>
           <Col xs="12" md="3">
-            <AvInput
+            <Input
               type="text"
               name="username"
               value={userModel.username}
-              //onChange={this.handleChange}
+              onChange={this.handleChange}
+              invalid={!userModel.username ? true : false}
+              valid
               required
             />
-            <AvFeedback>Please input Username</AvFeedback>
+            <FormFeedback>Please enter your username</FormFeedback>
           </Col>
-        </AvGroup>
-        <AvGroup row>
+        </FormGroup>
+        <FormGroup row>
           <Col md="5" align="right">
             <Label htmlFor="text-input">Password</Label>
           </Col>
           <Col xs="12" md="3">
-            <AvInput
-              type="text"
+            <Input
+              type="password"
               name="password"
               value={userModel.password}
-              //onChange={this.handleChange}
+              onChange={this.handleChange}
+              invalid={!userModel.password ? true : false}
+              valid
               required
             />
-            <AvFeedback>Please input Password</AvFeedback>
+            <FormFeedback>Please enter your password</FormFeedback>
           </Col>
-        </AvGroup>
-        <AvGroup row>
+        </FormGroup>
+        <FormGroup row>
           <Col md="5" align="right">
             <Label htmlFor="text-input">Confirm Password</Label>
           </Col>
           <Col xs="12" md="3">
-            <AvInput
-              type="text"
+            <Input
+              type="password"
               name="confirmPassword"
               value={userModel.confirmPassword}
-              //onChange={this.handleChange}
+              onChange={this.handleChange}
+              invalid={
+                !userModel.password ||
+                userModel.password !== userModel.confirmPassword
+                  ? true
+                  : false
+              }
+              valid
               required
             />
-            <AvFeedback>Please input Confirm Password</AvFeedback>
+            <FormFeedback>Password doesn't match </FormFeedback>
           </Col>
-        </AvGroup>
-        <AvGroup row>
+        </FormGroup>
+        <FormGroup row>
           <Col md="5" align="right">
             <Label htmlFor="text-input">Email</Label>
           </Col>
           <Col xs="12" md="3">
-            <AvInput
-              type="text"
+            <Input
+              invalid={
+                userModel.email &&
+                userModel.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+                  ? false
+                  : true
+              }
+              type="email"
               name="email"
               value={userModel.email}
-              //onChange={this.handleChange}
+              onChange={this.handleChange}
+              valid
               required
             />
+            <FormFeedback>example@email.com</FormFeedback>
           </Col>
-        </AvGroup>
+        </FormGroup>
+
         <FormGroup row align="center">
           <Col>
             <Button color="success">Save</Button>{" "}
@@ -177,7 +195,7 @@ class UserFrom extends Component {
             </Button>{" "}
           </Col>
         </FormGroup>
-      </AvForm>
+      </Form>
     );
   }
 }
