@@ -1,27 +1,15 @@
 import React, { Component } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
-import { inject } from "mobx-react";
-import _  from "lodash";
 
-import BackButton from "../../../components/Buttons/BackButton"
-import { From } from "../Form/Form";
+import BackButton from "../../components/Buttons/BackButton";
+import CustomerForm from "./CustomerForm";
 
-@inject("customerStore")
-export class EditCustomer extends Component {
+class EditCustomer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
-    //console.log(this.props);
-    const { customerData } = this.props.customerStore;
-    let data = _.filter(customerData, c => {
-      return c.id == this.props.location.data.id;
-    });
-
-    console.log("data form _lodash: ", data[0]);
-
     const location = {
       pathname: "/customer",
       state: { fromDashboard: true }
@@ -34,7 +22,7 @@ export class EditCustomer extends Component {
             <h4>Edit Customer</h4>
           </CardHeader>
           <CardBody>
-            <From data={data[0]}/>
+            <CustomerForm />
           </CardBody>
           <CardFooter>
             <BackButton pathname={location} />

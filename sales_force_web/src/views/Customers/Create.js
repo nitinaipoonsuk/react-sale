@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import BackButton from "../../components/Buttons/BackButton";
-import UserForm from "./UserForm";
+import CustomerForm from "./CustomerForm";
 
-
-class CreateUser extends Component {
+class Create extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const location = {
-      pathname: "/user",
+      pathname: "/customer",
       state: { fromDashboard: true }
     };
 
@@ -19,10 +17,10 @@ class CreateUser extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <h4>Create User</h4>
+            <h4>Create Customer</h4>
           </CardHeader>
           <CardBody>
-            <UserForm />
+            <CustomerForm />
           </CardBody>
           <CardFooter>
             <BackButton pathname={location} />
@@ -33,4 +31,4 @@ class CreateUser extends Component {
   }
 }
 
-export default CreateUser;
+export default Create;

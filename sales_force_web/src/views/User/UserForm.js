@@ -8,13 +8,8 @@ import {
   Input,
   FormFeedback
 } from "reactstrap";
-
-import PropTypes from "prop-types";
-
 import { connect } from "react-redux";
 import { createUser, editUser } from "../../Redux/Actions/UserAction";
-import { validtion } from "../../Redux/Actions/HelperAction";
-import { flow } from "mobx";
 
 export class UserFrom extends Component {
   constructor(props) {
@@ -35,7 +30,7 @@ export class UserFrom extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.userModel);
+    console.log(this.props);
     this.handleMappingModel();
   }
 
@@ -89,8 +84,7 @@ export class UserFrom extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("Submit");
-    console.log(event.target.checkValidity());
+    console.log("Submit");    
 
     if (this.state.id) this.props.dispatch(editUser(this.state));
     else this.props.dispatch(createUser(this.state));
@@ -202,8 +196,7 @@ export class UserFrom extends Component {
 
 const mapStateToProps = state => {
   return {
-    userModel: state.userReducer,
-    validation: state.valiDateReducer
+    userModel: state.userReducer,    
   };
 };
 

@@ -1,34 +1,45 @@
 import React, { Component } from "react";
-import {  
-  Col,
-  Button,
-  Form,
-  FormGroup,   
-  Input,
-  Label
-} from "reactstrap";
+import { Col, Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 import { connect } from "react-redux";
-import {  } from "../../../Redux/Actions/CustomerAction";
+import { createCustomer, editCustomer } from "../../Redux/Actions/CustomerAction";
 
-export class From extends Component {
+export class CustomerForm extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.handleMappingModel = this.handleMappingModel.bind(this);
 
     this.state = {
+      id: 0,
       firstname: "",
       lastname: "",
       phoneNumber: "",
       address: "",
       zipcode: ""
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
-    if (this.props.data) this.state = this.props.data;
+    console.log(this.props);
+    this.handleMappingModel();
+  }
+
+  handleMappingModel() {
+    if (this.props.customerModel) {
+      this.setState(() => {
+        return {
+          id: this.props.customerModel.id,
+          firstname: this.props.customerModel.firstname,
+          lastname: this.props.customerModel.lastname,
+          phoneNumber: this.props.customerModel.phoneNumber,
+          address: this.props.customerModel.address,
+          zipcode: this.props.customerModel.zipcode
+        };
+      });
+    }
   }
 
   handleChange(e) {
@@ -39,17 +50,47 @@ export class From extends Component {
     });
   }
 
+  handleCancel() {
+    console.log("handleCancel");
+    console.log(this.props.customerModel);
+    
+    
+
+    if (this.props.customerModel.id > 0) {
+      this.handleMappingModel();
+    } else {
+      console.log("else");
+      this.setState(() => {
+        return {
+          firstname: "",
+          lastname: "",
+          phoneNumber: "",
+          address: "",
+          zipcode: ""
+        };
+      });
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
 
-    if (this.state.id) this.props.customerStore.edit(this.state);
-    else this.props.customerStore.create(this.state);
+    if (this.state.id) this.props.dispatch(editCustomer(this.state));
+    else this.props.dispatch(createCustomer(this.state));
+
+    /*if (this.state.id) this.props.customerStore.edit(this.state);
+    else this.props.customerStore.create(this.state);*/
   }
 
   render() {
+    console.log("render");
+    console.log(this.state);
+
+    const customerModel = this.state;
+
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <FormGroup row>
           <Col md="5" align="right">
             <Label htmlFor="text-input">FistName</Label>
@@ -60,6 +101,9 @@ export class From extends Component {
               name="firstname"
               value={this.state.firstname}
               onChange={this.handleChange}
+              invalid={!customerModel.firstname ? true : false}
+              valid
+              required
             />
           </Col>
         </FormGroup>
@@ -73,6 +117,9 @@ export class From extends Component {
               name="lastname"
               value={this.state.lastname}
               onChange={this.handleChange}
+              invalid={!customerModel.lastname ? true : false}
+              valid
+              required
             />
           </Col>
         </FormGroup>
@@ -99,6 +146,9 @@ export class From extends Component {
               name="address"
               value={this.state.address}
               onChange={this.handleChange}
+              invalid={!customerModel.address ? true : false}
+              valid
+              required
             />
           </Col>
         </FormGroup>
@@ -156,10 +206,8 @@ export class From extends Component {
         </FormGroup>
         <FormGroup row align="center">
           <Col>
-            <Button onClick={this.handleSubmit} color="success">
-              Save
-            </Button>{" "}
-            <Button type="button" color="secondary">
+            <Button color="success">Save</Button>{" "}
+            <Button onClick={this.handleCancel} color="secondary">
               Cancel
             </Button>{" "}
           </Col>
@@ -168,5 +216,10 @@ export class From extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    customerModel: state.customerReducer,
+  };
+};
 
-export default From;
+export default connect(mapStateToProps)(CustomerForm);

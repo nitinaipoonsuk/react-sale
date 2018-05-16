@@ -13,8 +13,6 @@ import {
 import { observer, inject } from "mobx-react";
 import { observable, action } from "mobx";
 
-@inject("driverStore")
-@observer
 export class DriveFrom extends Component {
   constructor(props) {
     super(props);

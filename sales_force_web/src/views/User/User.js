@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Row, Col, Card, CardHeader, CardBody, Button } from "reactstrap";
 import { connect } from "react-redux";
 
-import { loadUser, selectData } from "../../Redux/Actions/UserAction";
+import { loadUser, selectUser } from "../../Redux/Actions/UserAction";
 
 // Import React Table
 import ReactTable from "react-table";
@@ -31,11 +31,10 @@ class User extends Component {
       <Link
         to={{
           pathname: "/user/edit",
-          search: `?id=${filter.original.id}`,
-          data: filter.original
-        }}        
+          search: `?id=${filter.original.id}`
+        }}
       >
-        <Button color="warning" size="sm">
+        <Button onClick={getTdProps} color="warning" size="sm">
           <i className="icon-list" />
         </Button>
       </Link>
@@ -45,11 +44,10 @@ class User extends Component {
       <Link
         to={{
           pathname: "/user/delete",
-          search: `?id=${filter.original.id}`,
-          data: filter.original
+          search: `?id=${filter.original.id}`
         }}
       >
-        <Button color="danger" size="sm">
+        <Button onClick={getTdProps} color="danger" size="sm">
           <i className="icon-trash" />
         </Button>
       </Link>
@@ -78,6 +76,18 @@ class User extends Component {
       }
     ];
 
+    const getTdProps = (state, rowInfo, column, instance) => {     
+      return {
+        onClick: e => {          
+          if (column.Expander) {            
+            this.props.dispatch(selectUser(rowInfo.original));
+          } else {
+            return;
+          }
+        }
+      };
+    };
+
     return (
       <div className="animated fadeIn">
         <Row>
@@ -96,7 +106,7 @@ class User extends Component {
                   columns={columns}
                   defaultPageSize={14}
                   className="-striped -highlight"
-                  noDataText="No Database"
+                  getTdProps={getTdProps}
                 />
               </CardBody>
             </Card>

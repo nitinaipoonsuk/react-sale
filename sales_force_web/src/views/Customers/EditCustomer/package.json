@@ -1,6 +1,0 @@
-{
-    "name": "EditCustomer",
-    "version": "0.0.0",
-    "private": true,
-    "main": "./EditCustomer.js"
-  }

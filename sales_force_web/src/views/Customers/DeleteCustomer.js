@@ -14,39 +14,28 @@ import {
   CardBody,
   CardFooter
 } from "reactstrap";
-import BackButton from "../../../components/Buttons/BackButton"
-import { inject } from "mobx-react";
-import _ from "lodash";
+import { Link } from "react-router-dom";
+import BackButton from "../../components/Buttons/BackButton";
 
-@inject("customerStore")
-export class DeleteCustomer extends Component {
+import { connect } from "react-redux";
+import { deleteCustomer } from "../../Redux/Actions/CustomerAction";
+
+class DeleteCustomer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
-    //this.customerData = this.props.customerStore;    
-    this.data;
   }
 
   handleSubmit(id) {
     event.preventDefault();
-    this.props.customerStore.delete(id);
+    this.props.dispatch(deleteCustomer(id));
   }
 
-  /*componentWillMount() {
-    //this.data = this.props.data;
-
-    console.log(this.props.location.data);
-    console.log(this.data);
-  }*/
-
   render() {
-    const { customerData } = this.props.customerStore;
-    let data = _.filter(customerData, c => {
-      return c.id == this.props.location.data.id;
-    });
+    const { customerModel } = this.props;
 
-    console.log(data[0])
+    console.log(customerModel);
 
     const location = {
       pathname: "/customer",
@@ -62,39 +51,41 @@ export class DeleteCustomer extends Component {
           <CardBody>
             <Form>
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="text-input">FistName</Label>
                 </Col>
                 <Col xs="12" md="3">
-                  <Label htmlFor="text-input">{data[0].firstname}</Label>
+                  <Label htmlFor="text-input">{customerModel.firstname}</Label>
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="text-input">LastName</Label>
                 </Col>
                 <Col xs="12" md="3">
-                  <Label htmlFor="text-input">{data[0].lastname}</Label>
+                  <Label htmlFor="text-input">{customerModel.lastname}</Label>
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="text-input">Tel.</Label>
                 </Col>
                 <Col xs="12" md="3">
-                  <Label htmlFor="text-input">{data[0].phoneNumber}</Label>
+                  <Label htmlFor="text-input">
+                    {customerModel.phoneNumber}
+                  </Label>
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="text-input">Address</Label>
                 </Col>
                 <Col xs="12" md="3">
-                  <Label htmlFor="text-input">{data[0].address}</Label>
+                  <Label htmlFor="text-input">{customerModel.address}</Label>
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="select">Province</Label>
                 </Col>
                 <Col xs="12" md="3">
@@ -102,7 +93,7 @@ export class DeleteCustomer extends Component {
                 </Col>
               </FormGroup>{" "}
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="select">District</Label>
                 </Col>
                 <Col xs="12" md="3">
@@ -110,7 +101,7 @@ export class DeleteCustomer extends Component {
                 </Col>
               </FormGroup>{" "}
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="select">SubDistrict</Label>
                 </Col>
                 <Col xs="12" md="3">
@@ -118,18 +109,24 @@ export class DeleteCustomer extends Component {
                 </Col>
               </FormGroup>
               <FormGroup row>
-                <Col md="5" align="right">
+                <Col md="6" align="right">
                   <Label htmlFor="text-input">Zipcode</Label>
                 </Col>
                 <Col xs="12" md="3">
-                  <Label htmlFor="text-input">{data[0].zipcode}</Label>
+                  <Label htmlFor="text-input">{customerModel.zipcode}</Label>
                 </Col>
               </FormGroup>
               <FormGroup row align="center">
                 <Col>
-                  <Button onClick={() => this.handleSubmit(data[0].id)} color="danger">
-                    Delete
-                  </Button>
+                  <Link to={location}>
+                    {" "}
+                    <Button
+                      onClick={() => this.handleSubmit(customerModel.id)}
+                      color="danger"
+                    >
+                      Delete
+                    </Button>
+                  </Link>
                 </Col>
               </FormGroup>
             </Form>
@@ -143,4 +140,10 @@ export class DeleteCustomer extends Component {
   }
 }
 
-export default DeleteCustomer;
+const mapStateToProps = state => {
+  return {
+    customerModel: state.customerReducer
+  };
+};
+
+export default connect(mapStateToProps)(DeleteCustomer);

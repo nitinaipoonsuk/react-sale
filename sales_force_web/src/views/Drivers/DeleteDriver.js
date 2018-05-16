@@ -14,11 +14,10 @@ import {
   Input,
   Label
 } from "reactstrap";
-import BackButton from "../../../components/Buttons/BackButton";
-import { inject } from "mobx-react";
+import BackButton from "../../components/Buttons/BackButton";
+
 import _ from "lodash";
 
-@inject("driverStore")
 export class DeleteDriver extends Component {
   constructor(props) {
     super(props);

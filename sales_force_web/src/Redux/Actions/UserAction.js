@@ -1,6 +1,4 @@
-//import axios from "axios"
 import fetchAPI from "../../Helper/FetchAPI";
-//import FetchAPI from "../../Helper/FetchAPI";
 
 export const loadUser = () => {
   return dispatch => {
@@ -18,10 +16,9 @@ export const loadUser = () => {
   };
 };
 
-export const selectData = data => {
+export const selectUser = data => {
   return dispatch => {
     console.log("dispatch: ", data);
-
     if (data) {
       dispatch({
         type: "SELECT_DATA",

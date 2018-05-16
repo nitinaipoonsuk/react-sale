@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ReactTable from "react-table";
 import { Button, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-import { observer, inject } from "mobx-react";
-import { observable, action } from "mobx";
+
 
 import "react-table/react-table.css";
 
-@inject("driverStore")
-@observer
 class Driver extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +14,7 @@ class Driver extends Component {
   }
 
   componentWillMount() {
-    this.props.driverStore.getDriver();
+    
   }
 
   handleButtonClick(e) {
@@ -27,9 +24,9 @@ class Driver extends Component {
   }
 
   render() {
-    const { driverStore } = this.props;
+ 
     let datas = [];
-    driverStore.driverData.forEach(d => {
+    /*driverStore.driverData.forEach(d => {
       datas.push({
         id: d.id,
         firstname: d.firstname,
@@ -42,7 +39,7 @@ class Driver extends Component {
         subscribe: d.subscribeName,
         remark: d.remark
       });
-    });
+    });*/
 
     const EditButton = filter => (
       <Link
@@ -136,8 +133,7 @@ class Driver extends Component {
                   columns={columns}
                   noDataText="No Database"
                   defaultPageSize={14}
-                  className="-striped -highlight"
-                  noDataText="Oh Noes!"
+                  className="-striped -highlight"                  
                 />
               </CardBody>
             </Card>
