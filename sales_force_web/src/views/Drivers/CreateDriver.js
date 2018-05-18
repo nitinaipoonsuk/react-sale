@@ -3,11 +3,9 @@ import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import BackButton from "../../components/Buttons/BackButton";
 import DriveFrom from "./DriveFrom";
 
-export class CreateDriver extends Component {
+class CreateDriver extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
   }
 
   render() {

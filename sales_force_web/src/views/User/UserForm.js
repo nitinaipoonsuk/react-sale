@@ -11,7 +11,7 @@ import {
 import { connect } from "react-redux";
 import { createUser, editUser } from "../../Redux/Actions/UserAction";
 
-export class UserFrom extends Component {
+class UserFrom extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -180,7 +180,6 @@ export class UserFrom extends Component {
             <FormFeedback>example@email.com</FormFeedback>
           </Col>
         </FormGroup>
-
         <FormGroup row align="center">
           <Col>
             <Button color="success">Save</Button>{" "}

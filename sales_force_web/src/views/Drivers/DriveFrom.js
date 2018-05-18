@@ -1,36 +1,43 @@
 import React, { Component } from "react";
 import {
-  Row,
   Col,
   Button,
-  Form,
   FormGroup,
-  FormText,
-  abel,
+  Label,
+  Form,
   Input,
-  Label
+  FormFeedback
 } from "reactstrap";
-import { observer, inject } from "mobx-react";
-import { observable, action } from "mobx";
+import * as moment from 'moment/moment'
+import { connect } from "react-redux";
+import { editDriver, createDriver } from "../../Redux/Actions/DriverAction";
 
-export class DriveFrom extends Component {
+class DriveFrom extends Component {
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleMappingModel = this.handleMappingModel.bind(this);
+    this.formatDateTime = this.formatDateTime.bind(this);
 
     this.state = {
+      id: 0,
       firstname: "",
       lastname: "",
       address: "",
       tel: "",
-      vehicledrivertype: "",
+      vehicleDriverTypeName: "",
       no: "",
-      expireddate: "",
-      subscribe: "",
+      expiredDate: "",
+      subscribeName: "",
       remark: ""
     };
+  }
 
-    this.handleChange = this.handleChange.bind(this);
+  componentWillMount() {
+    console.log(this.props);
+    this.handleMappingModel();
   }
 
   handleChange(e) {
@@ -41,22 +48,73 @@ export class DriveFrom extends Component {
     });
   }
 
-  componentWillMount() {
-    if (this.props.data) this.state = this.props.data;
+  handleMappingModel() {
+    if (this.props.driverModel) {
+
+      this.formatDateTime(this.props.driverModel.expiredDate);
+
+      this.setState(() => {
+        return {
+          id: this.props.driverModel.id,
+          firstname: this.props.driverModel.firstname,
+          lastname: this.props.driverModel.lastname,
+          address: this.props.driverModel.address,
+          tel: this.props.driverModel.tel,
+          vehicleDriverTypeName: this.props.driverModel.vehicleDriverTypeName,
+          no: this.props.driverModel.no,
+          expiredDate: this.formatDateTime() ,
+          subscribeName: this.props.driverModel.subscribeName,
+          remark: this.props.driverModel.remark
+        };
+      });
+    }
   }
 
+  formatDateTime(datetime){
+    return moment.utc(datetime).format('DD/MM/YYYY HH:mm')
+  }
+
+  handleCancel() {
+    console.log("handleCancel");
+    console.log(this.props.driverModel);   
+
+    if (this.props.driverModel.id > 0) {
+      this.handleMappingModel();
+    } else {
+      console.log("else");
+      this.setState(() => {
+        return {
+          firstname: "",
+          lastname: "",
+          address: "",
+          tel: "",
+          vehicleDriverTypeName: "",
+          no: "",
+          expiredDate: "",
+          subscribeName: "",
+          remark: ""
+        };
+      });
+    }
+  }
+  
   handleSubmit(event) {
     event.preventDefault();
+    console.log("Submit");
 
-    console.log(this.state);
-
-    if (this.state.id) this.props.driverStore.edit(this.state);
-    else this.props.driverStore.create(this.state);
+    if (this.state.id) this.props.dispatch(editDriver(this.state));
+    else this.props.dispatch(createDriver(this.state));
   }
 
   render() {
+    console.log("render");
+
+    console.log(this.state);
+
+    const driverModel = this.state;
+
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <FormGroup row>
           <Col md="5" align="right">
             <Label htmlFor="text-input">Fistname</Label>
@@ -67,7 +125,11 @@ export class DriveFrom extends Component {
               name="firstname"
               value={this.state.firstname}
               onChange={this.handleChange}
+              invalid={!driverModel.firstname ? true : false}
+              valid
+              required
             />
+            <FormFeedback>Please enter your firstname</FormFeedback>
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -80,7 +142,11 @@ export class DriveFrom extends Component {
               name="lastname"
               value={this.state.lastname}
               onChange={this.handleChange}
+              invalid={!driverModel.lastname ? true : false}
+              valid
+              required
             />
+            <FormFeedback>Please enter your lastname</FormFeedback>
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -142,9 +208,8 @@ export class DriveFrom extends Component {
           </Col>
           <Col xs="12" md="3">
             <Input
-              type="text"
-              name="expireddate"
-              value={this.state.expireddate}
+              type="date" name="expiredDate"
+              value={this.state.expiredDate}
               onChange={this.handleChange}
             />
           </Col>
@@ -177,10 +242,10 @@ export class DriveFrom extends Component {
         </FormGroup>
         <FormGroup row align="center">
           <Col>
-            <Button onClick={this.handleSubmit} color="success">
-              Save
+            <Button color="success">Save</Button>{" "}
+            <Button onClick={this.handleCancel} color="secondary">
+              Cancel
             </Button>{" "}
-            <Button color="secondary">Cancel</Button>{" "}
           </Col>
         </FormGroup>
       </Form>
@@ -188,4 +253,10 @@ export class DriveFrom extends Component {
   }
 }
 
-export default DriveFrom;
+const mapStateToProps = state => {
+  return {
+    driverModel: state.driverReducer
+  };
+};
+
+export default connect(mapStateToProps)(DriveFrom);

@@ -3,7 +3,6 @@ import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import BackButton from "../../components/Buttons/BackButton";
 import UserForm from "./UserForm";
 
-
 class CreateUser extends Component {
   constructor(props) {
     super(props);

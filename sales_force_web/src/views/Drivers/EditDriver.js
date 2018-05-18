@@ -1,25 +1,15 @@
 import React, { Component } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
-import { inject } from "mobx-react";
-import _ from "lodash";
 
 import BackButton from "../../components/Buttons/BackButton";
 import DriveFrom from "./DriveFrom";
 
-export class EditDriver extends Component {
+class EditDriver extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
-    const { driverData } = this.props.driverStore;
-    let data = _.filter(driverData, d => {
-      return d.id == this.props.location.data.id;
-    });
-
-    console.log("data form _lodash: ", data[0]);
-
     const location = {
       pathname: "/driver",
       state: { fromDashboard: true }
@@ -32,7 +22,7 @@ export class EditDriver extends Component {
             <h4>Edit Driver</h4>
           </CardHeader>
           <CardBody>
-            <DriveFrom data={data[0]} />
+            <DriveFrom />
           </CardBody>
           <CardFooter>
             <BackButton pathname={location} />
