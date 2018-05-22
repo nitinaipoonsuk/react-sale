@@ -4,7 +4,7 @@ import { Col, Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { connect } from "react-redux";
 import { createCustomer, editCustomer } from "../../Redux/Actions/CustomerAction";
 
-export class CustomerForm extends Component {
+class CustomerForm extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,9 +52,7 @@ export class CustomerForm extends Component {
 
   handleCancel() {
     console.log("handleCancel");
-    console.log(this.props.customerModel);
-    
-    
+    console.log(this.props.customerModel);  
 
     if (this.props.customerModel.id > 0) {
       this.handleMappingModel();
